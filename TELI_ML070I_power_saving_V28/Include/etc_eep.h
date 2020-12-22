@@ -1,0 +1,31 @@
+/*****************************************************************************/
+/*                                                                           										*/
+/*  TELI ML070I   MCU                    													*/
+/*                                                                           										*/
+/* Etc_eep.h                                                           										*/
+/*                                                                           										*/
+/*****************************************************************************/
+#ifndef __ETC_EEP__
+#define __ETC_EEP__
+
+////eeprom.h
+#define  EEP_Powerflag          			0x10   
+#define  EEP_CameraVolt          			0x11   
+#define	EEP_DC12_PWR_START		0x12	
+#define	EEP_LowBattery_Flag			0x13
+#define	EEP_PowerOffToOnflag			0x14
+
+
+#define	EEP_FWREV_MAJOR			0x04	//BYTE	1	F/W Rev.-major(Hex)	
+#define	EEP_FWREV_MINOR1			0x05	//BYTE	1	F/W Rev.-minor(Hex)
+#define	EEP_FWREV_MINOR2			0x06	//BYTE	1	F/W Rev.-minor(Hex)
+#define	EEP_DEBUGLEVEL				0x07	//BYTE	1	DebugLevel
+
+DWORD GetFWRevEE(void);
+void SaveFWRevEE(void);
+BYTE GetProjectNameEE(void);
+
+void SaveDebugLevelEE(BYTE);
+void ClearBasicEE(void);
+
+#endif	// __ETC_EEP__
