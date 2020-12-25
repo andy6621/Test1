@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   CPU                                                               11/30/2020 09:22:59 PAGE 1   
+C51 COMPILER V9.60.0.0   CPU                                                               12/22/2020 17:53:49 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE CPU
@@ -62,7 +62,7 @@ line level    source
   52          #ifdef SERIAL //=======================================================================
   53          
   54          
-C51 COMPILER V9.60.0.0   CPU                                                               11/30/2020 09:22:59 PAGE 2   
+C51 COMPILER V9.60.0.0   CPU                                                               12/22/2020 17:53:49 PAGE 2   
 
   55          
   56          
@@ -126,7 +126,7 @@ line level    source
  112   2        }
  113   1        else 
  114   1        {
-C51 COMPILER V9.60.0.0   CPU                                                               11/30/2020 09:22:59 PAGE 3   
+C51 COMPILER V9.60.0.0   CPU                                                               12/22/2020 17:53:49 PAGE 3   
 
  115   2          Printf("\r\nCannot access EEPROM!!!!");
  116   2          Printf("\r\nNo initialize");
@@ -190,7 +190,7 @@ line level    source
  174   1        TR2    = 0;
  175   1        ET2    = 1;
  176   1        //-----------------------------------------------------------------
-C51 COMPILER V9.60.0.0   CPU                                                               11/30/2020 09:22:59 PAGE 4   
+C51 COMPILER V9.60.0.0   CPU                                                               12/22/2020 17:53:49 PAGE 4   
 
  177   1      
  178   1        //Uart2
@@ -254,7 +254,7 @@ line level    source
  236   1        IE=0x80;
  237   1      
  238   1        Power_down_mode=1;
-C51 COMPILER V9.60.0.0   CPU                                                               11/30/2020 09:22:59 PAGE 5   
+C51 COMPILER V9.60.0.0   CPU                                                               12/22/2020 17:53:49 PAGE 5   
 
  239   1        P4_0 = 1; //LED RED off
  240   1        P4_1 = 1; //LED GREEN off
@@ -271,11 +271,11 @@ line level    source
  251          BYTE Check_ADAP_IN(void)  
  252          {
  253   1      
- 254   1      if(GET_ADAP_12()==_TRUE)    
+ 254   1      if((GET_ADAP_12()==_TRUE)||(P4_2==0))   
  255   1      {
  256   2        MCUTimerDelayXms(50);
  257   2        
- 258   2        if(GET_ADAP_12()==_TRUE)    
+ 258   2        if((GET_ADAP_12()==_TRUE)||(P4_2==0))   
  259   2          return _TRUE;
  260   2        else
  261   2          return _FALSE;
@@ -318,7 +318,7 @@ line level    source
  298   2      */
  299   2        #else
                   #if 0
-C51 COMPILER V9.60.0.0   CPU                                                               11/30/2020 09:22:59 PAGE 6   
+C51 COMPILER V9.60.0.0   CPU                                                               12/22/2020 17:53:49 PAGE 6   
 
                   if(val==High_Current)
                     P1_4=0;
@@ -382,7 +382,7 @@ line level    source
  360   1      
  361   1          if(Time5ms)
  362   1            Time5ms--;
-C51 COMPILER V9.60.0.0   CPU                                                               11/30/2020 09:22:59 PAGE 7   
+C51 COMPILER V9.60.0.0   CPU                                                               12/22/2020 17:53:49 PAGE 7   
 
  363   1          if(Time5ms==0)
  364   1          {
@@ -446,7 +446,7 @@ line level    source
  422   3            else
  423   3              keyticSec=0;
  424   3        
-C51 COMPILER V9.60.0.0   CPU                                                               11/30/2020 09:22:59 PAGE 8   
+C51 COMPILER V9.60.0.0   CPU                                                               12/22/2020 17:53:49 PAGE 8   
 
  425   3            }
  426   2            if( tic_pc!=0xffff ) 
@@ -510,7 +510,7 @@ line level    source
  484   4          }
  485   3          else if( keytic==800 ) {//8sec into DVR factory mode  
  486   4      
-C51 COMPILER V9.60.0.0   CPU                                                               11/30/2020 09:22:59 PAGE 9   
+C51 COMPILER V9.60.0.0   CPU                                                               12/22/2020 17:53:49 PAGE 9   
 
  487   4            if(RepeatKey==ON)
  488   4            {
@@ -574,7 +574,7 @@ line level    source
  546   1          
  547   1      }
  548          
-C51 COMPILER V9.60.0.0   CPU                                                               11/30/2020 09:22:59 PAGE 10  
+C51 COMPILER V9.60.0.0   CPU                                                               12/22/2020 17:53:49 PAGE 10  
 
  549          //=============================================================================//
  550          //                     ShowWorkTimer                                                                    //
@@ -638,7 +638,7 @@ line level    source
  605   2        //val=((((GET_BATTERY_CAPACITY()*32)/*-800*/)/10000)*100)+((((GET_BATTERY_CAPACITY()*32)/*-800*/)%10000)/
              -100);
  606   2        //val=(val*(54+1))/100;
-C51 COMPILER V9.60.0.0   CPU                                                               11/30/2020 09:22:59 PAGE 11  
+C51 COMPILER V9.60.0.0   CPU                                                               12/22/2020 17:53:49 PAGE 11  
 
  607   2      
  608   2        val=((((GET_BATTERY_CAPACITY()*59)/*-800*/)/100))+((((GET_BATTERY_CAPACITY()*59)/*-800*/)/100))+((((GET_B
@@ -702,7 +702,7 @@ line level    source
  665   1      else
  666   1      GraphicsPrint(CYAN,"\r\n(POWER_STATUS=%d)",(WORD)GET_POWER_STATUS());
  667   1      
-C51 COMPILER V9.60.0.0   CPU                                                               11/30/2020 09:22:59 PAGE 12  
+C51 COMPILER V9.60.0.0   CPU                                                               12/22/2020 17:53:49 PAGE 12  
 
  668   1      #if 0
               if(GET_BATTERY_CHARGE_STATE()==_BATT_STATUS_NO_BATT)   
@@ -766,7 +766,7 @@ line level    source
  726   2          break;
  727   2         case _SYSTEM_TIMER_EVENT_GRN_BLINK:
  728   2                    if(GET_GREEN())     
-C51 COMPILER V9.60.0.0   CPU                                                               11/30/2020 09:22:59 PAGE 13  
+C51 COMPILER V9.60.0.0   CPU                                                               12/22/2020 17:53:49 PAGE 13  
 
  729   2            {
  730   3          SET_GREEN();
@@ -830,7 +830,7 @@ line level    source
  788   2          
  789   2          break;
  790   2         default:
-C51 COMPILER V9.60.0.0   CPU                                                               11/30/2020 09:22:59 PAGE 14  
+C51 COMPILER V9.60.0.0   CPU                                                               12/22/2020 17:53:49 PAGE 14  
 
  791   2                  break;
  792   2       }  
@@ -894,7 +894,7 @@ line level    source
  850   2          //month++;
  851   2        }
  852   1      
-C51 COMPILER V9.60.0.0   CPU                                                               11/30/2020 09:22:59 PAGE 15  
+C51 COMPILER V9.60.0.0   CPU                                                               12/22/2020 17:53:49 PAGE 15  
 
  853   1        if( TI ) {          //--- Transmit interrupt ----
  854   2          TI = 0;
@@ -958,7 +958,7 @@ line level    source
                 return ret;
               }
               #endif
-C51 COMPILER V9.60.0.0   CPU                                                               11/30/2020 09:22:59 PAGE 16  
+C51 COMPILER V9.60.0.0   CPU                                                               12/22/2020 17:53:49 PAGE 16  
 
  915          
  916          //=============================================================================
@@ -1022,7 +1022,7 @@ line level    source
  974          //       .TL2 <- RCAP2L
  975          //      TL2 is incremented every machine cycle
  976          //      Every machine cycle is 12*Tosc(11.0592MHz)
-C51 COMPILER V9.60.0.0   CPU                                                               11/30/2020 09:22:59 PAGE 17  
+C51 COMPILER V9.60.0.0   CPU                                                               12/22/2020 17:53:49 PAGE 17  
 
  977          //
  978          //      Every machine cycle = 1.085us
@@ -1086,7 +1086,7 @@ line level    source
 1036   1        PCON=0x80;
 1037   1        IE=IE_Temp;
 1038   1        Power_down_mode=OFF;
-C51 COMPILER V9.60.0.0   CPU                                                               11/30/2020 09:22:59 PAGE 18  
+C51 COMPILER V9.60.0.0   CPU                                                               12/22/2020 17:53:49 PAGE 18  
 
 1039   1      }
 1040          
@@ -1108,7 +1108,7 @@ line level    source
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   2651    ----
+   CODE SIZE        =   2657    ----
    CONSTANT SIZE    =   1032    ----
    XDATA SIZE       =     24       8
    PDATA SIZE       =   ----    ----

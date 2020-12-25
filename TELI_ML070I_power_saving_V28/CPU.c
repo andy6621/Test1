@@ -251,11 +251,11 @@ void SET_MCU_POWER_DOWN_MODE(void)
 BYTE Check_ADAP_IN(void)	
 {
 
-if(GET_ADAP_12()==_TRUE)		
+if((GET_ADAP_12()==_TRUE)||(P4_2==0))		
 {
 	MCUTimerDelayXms(50);
 	
-	if(GET_ADAP_12()==_TRUE)		
+	if((GET_ADAP_12()==_TRUE)||(P4_2==0))		
 		return _TRUE;
 	else
 		return _FALSE;

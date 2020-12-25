@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    11/30/2020  09:23:01  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    12/22/2020  17:53:50  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
@@ -59,7 +59,7 @@ INPUT MODULES INCLUDED:
   C:\KEIL_V5\C51\LIB\C51L.LIB (?C?LLDPDATA)
   C:\KEIL_V5\C51\LIB\C51L.LIB (?C?LLDCODE)
   C:\KEIL_V5\C51\LIB\C51L.LIB (?C?PLDIDATA)
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 2
 
 
   C:\KEIL_V5\C51\LIB\C51L.LIB (?C?PLDXDATA)
@@ -119,7 +119,7 @@ LINK MAP OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
             CODE    0066H     0DEDH     UNIT         ?PR?_SYSTIMEREVENTPROC?SYSTIMER
             CODE    0E53H     088CH     UNIT         ?C?LIB_CODE
             CODE    16DFH     0556H     UNIT         ?PR?_DOPRINT?PRINTF
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 3
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 3
 
 
             CODE    1C35H     043EH     UNIT         ?PR?DVRRECEIVEPASER?HS_DVRPROTOCOL
@@ -179,29 +179,29 @@ LINK MAP OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
             CODE    4A13H     001FH     UNIT         ?PR?INT2_INT?CPU
             CODE    4A32H     001FH     UNIT         ?PR?INT3_INT?CPU
             CODE    4A51H     001FH     UNIT         ?PR?MAIN_LOOP?MAIN
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 4
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 4
 
 
             CODE    4A70H     001EH     UNIT         ?PR?RS2_RX?CPU
-            CODE    4A8EH     001BH     UNIT         ?PR?_GETKEY?KEYREMO
-            CODE    4AA9H     0019H     UNIT         ?PR?SAVEFWREVEE?ETC_EEP
-            CODE    4AC2H     0019H     UNIT         ?PR?_MCUTIMERDELAYXMS?SYSTIMER
-            CODE    4ADBH     0018H     UNIT         ?PR?_DELAY?CPU
-            CODE    4AF3H     0018H     UNIT         ?CO?SYSPOWER
-            CODE    4B0BH     0016H     UNIT         ?PR?CHECK_ADAP_IN?CPU
-            CODE    4B21H     0016H     UNIT         ?PR?INITVARS?CPU
-            CODE    4B37H     0015H     UNIT         ?PR?_MCUTIMERGETEVENTID?SYSTIMER
-            CODE    4B4CH     0014H     UNIT         ?PR?I2CDELAY?I2C
-            CODE    4B60H     0014H     UNIT         ?PR?_MCUTIMERGETEVENTTIME?SYSTIMER
-            CODE    4B74H     0013H     UNIT         ?PR?_MCUTIMERCLREVENTVALID?SYSTIMER
-            CODE    4B87H     0012H     UNIT         ?CO?ETC_EEP
-            CODE    4B99H     0012H     UNIT         ?PR?I2CSTART?I2C
-            CODE    4BABH     0011H     UNIT         ?PR?_MCUTIMERCHECKEVENTVALID?SYSTIMER
-            CODE    4BBCH     000FH     UNIT         ?PR?TIMER2_INT?CPU
-            CODE    4BCBH     000CH     UNIT         ?PR?_ABS?ABS
-            CODE    4BD7H     000BH     UNIT         ?PR?RS2_READY?CPU
-            CODE    4BE2H     0007H     UNIT         ?PR?GETBATTERYBTH?MAIN
-            CODE    4BE9H     0007H     UNIT         ?PR?GETBATTERYVOLTAGE?MAIN
+            CODE    4A8EH     001CH     UNIT         ?PR?CHECK_ADAP_IN?CPU
+            CODE    4AAAH     001BH     UNIT         ?PR?_GETKEY?KEYREMO
+            CODE    4AC5H     0019H     UNIT         ?PR?SAVEFWREVEE?ETC_EEP
+            CODE    4ADEH     0019H     UNIT         ?PR?_MCUTIMERDELAYXMS?SYSTIMER
+            CODE    4AF7H     0018H     UNIT         ?PR?_DELAY?CPU
+            CODE    4B0FH     0018H     UNIT         ?CO?SYSPOWER
+            CODE    4B27H     0016H     UNIT         ?PR?INITVARS?CPU
+            CODE    4B3DH     0015H     UNIT         ?PR?_MCUTIMERGETEVENTID?SYSTIMER
+            CODE    4B52H     0014H     UNIT         ?PR?I2CDELAY?I2C
+            CODE    4B66H     0014H     UNIT         ?PR?_MCUTIMERGETEVENTTIME?SYSTIMER
+            CODE    4B7AH     0013H     UNIT         ?PR?_MCUTIMERCLREVENTVALID?SYSTIMER
+            CODE    4B8DH     0012H     UNIT         ?CO?ETC_EEP
+            CODE    4B9FH     0012H     UNIT         ?PR?I2CSTART?I2C
+            CODE    4BB1H     0011H     UNIT         ?PR?_MCUTIMERCHECKEVENTVALID?SYSTIMER
+            CODE    4BC2H     000FH     UNIT         ?PR?TIMER2_INT?CPU
+            CODE    4BD1H     000CH     UNIT         ?PR?_ABS?ABS
+            CODE    4BDDH     000BH     UNIT         ?PR?RS2_READY?CPU
+            CODE    4BE8H     0007H     UNIT         ?PR?GETBATTERYBTH?MAIN
+            CODE    4BEFH     0007H     UNIT         ?PR?GETBATTERYVOLTAGE?MAIN
 
 
 
@@ -239,7 +239,7 @@ SEGMENT                                             BIT_GROUP          XDATA_GRO
 
 ?PR?_DOPRINT?PRINTF                              0021H.1  0000H.2    0206H    0015H
   +--> ?CO?PRINTF
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 5
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 5
 
 
 
@@ -299,7 +299,7 @@ SEGMENT                                             BIT_GROUP          XDATA_GRO
   +--> ?PR?_WRITEEEP?I2C
 
 ?PR?LOADEEPROM?MAIN                              -----    -----      -----    -----
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 6
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 6
 
 
   +--> ?PR?_READEEP?I2C
@@ -359,7 +359,7 @@ SEGMENT                                             BIT_GROUP          XDATA_GRO
   +--> ?PR?_MCUTIMERCANCELTIMEREVENT?SYSTIMER
   +--> ?PR?_SET_PWM?CPU
   +--> ?PR?_USERINTERFACEPOWERSWITCH?SYSPOWER
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 7
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 7
 
 
   +--> ?PR?_MCUTIMERACTIVETIMEREVENT?SYSTIMER
@@ -419,7 +419,7 @@ SEGMENT                                             BIT_GROUP          XDATA_GRO
   +--> ?PR?_MCUTIMERCANCELTIMEREVENT?SYSTIMER
   +--> ?PR?_MCUTIMERACTIVETIMEREVENT?SYSTIMER
   +--> ?PR?_MCU_SENDCMDTODVR?MAIN
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 8
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 8
 
 
   +--> ?PR?GETBATTERYVOLTAGE?MAIN
@@ -479,7 +479,7 @@ SEGMENT                                             BIT_GROUP          XDATA_GRO
   +--> ?CO?PRINTF
 
 
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 9
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 9
 
 
 
@@ -534,12 +534,12 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   D:00B2H         PUBLIC        P3M1
   D:00B4H         PUBLIC        P4M1
   D:00B0H         PUBLIC        P3
-  C:4BBCH         PUBLIC        timer2_int
+  C:4BC2H         PUBLIC        timer2_int
   D:00E8H         PUBLIC        P4
   X:0255H         PUBLIC        FormatWait
   X:0256H         PUBLIC        Power_Msg_Count
   X:0258H         PUBLIC        IE_Temp
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 10
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 10
 
 
   D:00F9H         PUBLIC        CH
@@ -552,7 +552,7 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   B:0020H.0       PUBLIC        RepeatKey
   X:0259H         PUBLIC        LED_FLASH_COUNT
   D:0043H         PUBLIC        RS2_out
-  C:4ADBH         PUBLIC        _delay
+  C:4AF7H         PUBLIC        _delay
   D:00FCH         PUBLIC        CCAP2H
   B:00E8H.0       PUBLIC        P4_0
   D:00FDH         PUBLIC        CCAP3H
@@ -560,6 +560,7 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   B:0090H.4       PUBLIC        P1_4
   B:0080H.5       PUBLIC        P0_5
   X:025BH         PUBLIC        minute
+  B:00E8H.2       PUBLIC        P4_2
   D:00ECH         PUBLIC        CCAP2L
   B:00A8H.4       PUBLIC        ES
   D:00EDH         PUBLIC        CCAP3L
@@ -587,7 +588,7 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   D:0099H         PUBLIC        SBUF
   D:0087H         PUBLIC        PCON
   D:0098H         PUBLIC        SCON
-  C:4B21H         PUBLIC        InitVars
+  C:4B27H         PUBLIC        InitVars
   D:0089H         PUBLIC        TMOD
   D:0088H         PUBLIC        TCON
   C:38B6H         PUBLIC        main_init
@@ -598,10 +599,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:43B6H         PUBLIC        _SET_PWM
   X:0261H         PUBLIC        PowerDownWait
   D:0047H         PUBLIC        tm01
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 11
+
+
   D:0049H         PUBLIC        stopWatch
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 11
-
-
   X:0262H         PUBLIC        EncorderCount
   D:004BH         SYMBOL        RS_buf
   C:48A8H         PUBLIC        SET_MCU_POWER_DOWN_MODE
@@ -614,8 +615,8 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   B:00A8H.2       PUBLIC        EX1
   B:00C0H.2       PUBLIC        EX2
   B:00C0H.0       PUBLIC        IT2
-  C:4BD7H         PUBLIC        RS2_ready
-  C:4B0BH         PUBLIC        Check_ADAP_IN
+  C:4BDDH         PUBLIC        RS2_ready
+  C:4A8EH         PUBLIC        Check_ADAP_IN
   B:00C0H.6       PUBLIC        EX3
   B:00C0H.4       PUBLIC        IT3
   D:008AH         PUBLIC        TL0
@@ -658,10 +659,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:396FH         LINE#         104
   C:397EH         LINE#         105
   C:397EH         LINE#         108
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 12
+
+
   C:397EH         LINE#         109
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 12
-
-
   C:3984H         LINE#         110
   C:3987H         LINE#         111
   C:3987H         LINE#         112
@@ -718,10 +719,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:48B7H         LINE#         231
   C:48B9H         LINE#         232
   C:48BBH         LINE#         233
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 13
+
+
   C:48BDH         LINE#         235
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 13
-
-
   C:48C3H         LINE#         236
   C:48C6H         LINE#         238
   C:48CCH         LINE#         239
@@ -733,17 +734,17 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:48D6H         LINE#         248
   -------         ENDPROC       SET_MCU_POWER_DOWN_MODE
   -------         PROC          CHECK_ADAP_IN
-  C:4B0BH         LINE#         251
-  C:4B0BH         LINE#         252
-  C:4B0BH         LINE#         254
-  C:4B0EH         LINE#         255
-  C:4B0EH         LINE#         256
-  C:4B15H         LINE#         258
-  C:4B18H         LINE#         259
-  C:4B1BH         LINE#         261
-  C:4B1EH         LINE#         262
-  C:4B1EH         LINE#         264
-  C:4B20H         LINE#         265
+  C:4A8EH         LINE#         251
+  C:4A8EH         LINE#         252
+  C:4A8EH         LINE#         254
+  C:4A94H         LINE#         255
+  C:4A94H         LINE#         256
+  C:4A9BH         LINE#         258
+  C:4AA1H         LINE#         259
+  C:4AA4H         LINE#         261
+  C:4AA7H         LINE#         262
+  C:4AA7H         LINE#         264
+  C:4AA9H         LINE#         265
   -------         ENDPROC       CHECK_ADAP_IN
   -------         PROC          _SET_PWM
   X:01D6H         SYMBOL        index
@@ -778,10 +779,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:441BH         LINE#         331
   C:441BH         LINE#         332
   C:441BH         LINE#         335
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 14
+
+
   -------         ENDPROC       _SET_PWM
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 14
-
-
   -------         PROC          TIMER0_INT
   -------         DO            
   D:000FH         SYMBOL        TempKey
@@ -838,10 +839,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:2E99H         LINE#         423
   C:2E9BH         LINE#         425
   C:2E9BH         LINE#         426
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 15
+
+
   C:2EA5H         LINE#         427
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 15
-
-
   C:2EADH         LINE#         430
   C:2EBBH         LINE#         431
   C:2ECFH         LINE#         432
@@ -898,10 +899,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:24DEH         LINE#         562
   C:24E5H         LINE#         563
   C:24E5H         LINE#         564
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 16
+
+
   C:2508H         LINE#         565
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 16
-
-
   C:250AH         LINE#         566
   C:2513H         LINE#         567
   C:2513H         LINE#         568
@@ -958,10 +959,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:2808H         LINE#         649
   C:2812H         LINE#         650
   C:281CH         LINE#         651
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 17
+
+
   C:2826H         LINE#         652
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 17
-
-
   C:2830H         LINE#         653
   C:283AH         LINE#         654
   C:2845H         LINE#         656
@@ -979,11 +980,11 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   -------         DO            
   D:0007H         SYMBOL        j
   -------         ENDDO         
-  C:4B21H         LINE#         694
-  C:4B21H         LINE#         695
-  C:4B21H         LINE#         697
-  C:4B2DH         LINE#         698
-  C:4B36H         LINE#         700
+  C:4B27H         LINE#         694
+  C:4B27H         LINE#         695
+  C:4B27H         LINE#         697
+  C:4B33H         LINE#         698
+  C:4B3CH         LINE#         700
   -------         ENDPROC       INITVARS
   -------         PROC          _POWERLED
   D:0007H         SYMBOL        flag
@@ -1018,10 +1019,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:438AH         LINE#         741
   C:438AH         LINE#         742
   C:438CH         LINE#         743
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 18
+
+
   C:438EH         LINE#         744
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 18
-
-
   C:438FH         LINE#         746
   C:438FH         LINE#         747
   C:438FH         LINE#         748
@@ -1078,10 +1079,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:48FAH         LINE#         851
   C:48FAH         LINE#         853
   C:48FDH         LINE#         854
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 19
+
+
   C:48FFH         LINE#         855
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 19
-
-
   C:4901H         LINE#         856
   C:4901H         LINE#         857
   -------         ENDPROC       SERIAL_INT
@@ -1102,11 +1103,11 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:4804H         LINE#         883
   -------         ENDPROC       SERIAL2_INT
   -------         PROC          RS2_READY
-  C:4BD7H         LINE#         919
-  C:4BD7H         LINE#         920
-  C:4BD7H         LINE#         921
-  C:4BDFH         LINE#         922
-  C:4BE1H         LINE#         923
+  C:4BDDH         LINE#         919
+  C:4BDDH         LINE#         920
+  C:4BDDH         LINE#         921
+  C:4BE5H         LINE#         922
+  C:4BE7H         LINE#         923
   -------         ENDPROC       RS2_READY
   -------         PROC          RS2_RX
   -------         DO            
@@ -1133,25 +1134,25 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:000AH         LINE#         962
   -------         ENDPROC       _RS2_TX
   -------         PROC          TIMER2_INT
-  C:4BBCH         LINE#         1003
-  C:4BBEH         LINE#         1005
-  C:4BC0H         LINE#         1007
-  C:4BC8H         LINE#         1009
+  C:4BC2H         LINE#         1003
+  C:4BC4H         LINE#         1005
+  C:4BC6H         LINE#         1007
+  C:4BCEH         LINE#         1009
   -------         ENDPROC       TIMER2_INT
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 20
+
+
   -------         PROC          _DELAY
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 20
-
-
   D:0007H         SYMBOL        cnt
   -------         DO            
   D:0004H         SYMBOL        ttic01
   -------         ENDDO         
-  C:4ADBH         LINE#         1011
-  C:4ADBH         LINE#         1012
-  C:4ADBH         LINE#         1015
-  C:4AE9H         LINE#         1016
-  C:4AE9H         LINE#         1018
-  C:4AF2H         LINE#         1019
+  C:4AF7H         LINE#         1011
+  C:4AF7H         LINE#         1012
+  C:4AF7H         LINE#         1015
+  C:4B05H         LINE#         1016
+  C:4B05H         LINE#         1018
+  C:4B0EH         LINE#         1019
   -------         ENDPROC       _DELAY
   -------         PROC          INT2_INT
   C:4A13H         LINE#         1023
@@ -1177,7 +1178,7 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:0000H         SYMBOL        _ICE_DUMMY_
   C:45FFH         PUBLIC        GetProjectNameEE
   C:441CH         PUBLIC        ClearBasicEE
-  C:4AA9H         PUBLIC        SaveFWRevEE
+  C:4AC5H         PUBLIC        SaveFWRevEE
   C:456BH         PUBLIC        GetFWRevEE
   -------         PROC          GETFWREVEE
   -------         DO            
@@ -1198,21 +1199,21 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:45FFH         LINE#         32
   C:45FFH         LINE#         33
   C:4605H         LINE#         35
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 21
+
+
   C:4613H         LINE#         36
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 21
-
-
   C:4622H         LINE#         37
   C:4631H         LINE#         38
   C:4640H         LINE#         40
   C:4645H         LINE#         41
   -------         ENDPROC       GETPROJECTNAMEEE
   -------         PROC          SAVEFWREVEE
-  C:4AA9H         LINE#         43
-  C:4AA9H         LINE#         44
-  C:4AA9H         LINE#         51
-  C:4AB1H         LINE#         52
-  C:4AB9H         LINE#         53
+  C:4AC5H         LINE#         43
+  C:4AC5H         LINE#         44
+  C:4AC5H         LINE#         51
+  C:4ACDH         LINE#         52
+  C:4AD5H         LINE#         53
   -------         ENDPROC       SAVEFWREVEE
   -------         PROC          CLEARBASICEE
   C:441CH         LINE#         67
@@ -1258,10 +1259,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:1C53H         LINE#         51
   C:1C59H         LINE#         53
   C:1C59H         LINE#         55
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 22
+
+
   C:1C5FH         LINE#         56
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 22
-
-
   C:1C5FH         LINE#         57
   C:1C62H         LINE#         59
   C:1C62H         LINE#         61
@@ -1318,10 +1319,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:1CD9H         LINE#         117
   C:1CDBH         LINE#         119
   C:1CDBH         LINE#         120
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 23
+
+
   C:1CE0H         LINE#         121
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 23
-
-
   C:1CE6H         LINE#         126
   C:1CE6H         LINE#         127
   C:1CE7H         LINE#         128
@@ -1378,10 +1379,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:1DBCH         LINE#         200
   C:1DBFH         LINE#         201
   C:1DBFH         LINE#         206
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 24
+
+
   C:1DC5H         LINE#         207
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 24
-
-
   C:1DC8H         LINE#         208
   C:1DC8H         LINE#         213
   C:1DCEH         LINE#         214
@@ -1438,10 +1439,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:1FA3H         LINE#         341
   C:1FA3H         LINE#         342
   C:1FA3H         LINE#         343
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 25
+
+
   C:1FA5H         LINE#         344
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 25
-
-
   C:1FB0H         LINE#         345
   C:1FB0H         LINE#         346
   C:1FB7H         LINE#         347
@@ -1498,10 +1499,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:2072H         LINE#         427
   C:2072H         LINE#         428
   C:2072H         LINE#         431
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 26
+
+
   -------         ENDPROC       DVRRECEIVEPASER
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 26
-
-
   -------         ENDMOD        HS_DVRPROTOCOL
 
   -------         MODULE        I2C
@@ -1511,26 +1512,26 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:4842H         PUBLIC        I2CReadData
   C:4809H         PUBLIC        _ReadI2C
   C:4247H         PUBLIC        _I2CWriteData
-  C:4B99H         PUBLIC        I2CStart
-  C:4B50H         PUBLIC        I2Cdelay
+  C:4B9FH         PUBLIC        I2CStart
+  C:4B56H         PUBLIC        I2Cdelay
   C:498CH         PUBLIC        _ReadEEP
   C:49D3H         PUBLIC        _WriteAD5110
   C:0016H         PUBLIC        I2CStop
   C:4646H         PUBLIC        _WriteEEP
   C:41C9H         PUBLIC        _AD5110_I2CWriteData
-  C:4B4CH         SYMBOL        L?0054
+  C:4B52H         SYMBOL        L?0054
   -------         PROC          L?0053
   -------         ENDPROC       L?0053
-  C:4B4CH         SYMBOL        L?0054
+  C:4B52H         SYMBOL        L?0054
   -------         PROC          I2CDELAY
   -------         DO            
   D:0007H         SYMBOL        i
   -------         ENDDO         
-  C:4B50H         LINE#         34
-  C:4B50H         LINE#         35
-  C:4B50H         LINE#         37
-  C:4B5CH         LINE#         38
-  C:4B5FH         LINE#         39
+  C:4B56H         LINE#         34
+  C:4B56H         LINE#         35
+  C:4B56H         LINE#         37
+  C:4B62H         LINE#         38
+  C:4B65H         LINE#         39
   -------         ENDPROC       I2CDELAY
   -------         PROC          _WRITEEEP
   X:01D5H         SYMBOL        index
@@ -1558,10 +1559,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:4990H         LINE#         62
   C:4990H         LINE#         66
   C:499FH         LINE#         68
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 27
+
+
   C:49A7H         LINE#         73
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 27
-
-
   C:49ACH         LINE#         74
   C:49B1H         LINE#         75
   -------         ENDPROC       _READEEP
@@ -1584,13 +1585,13 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:4841H         LINE#         90
   -------         ENDPROC       _READI2C
   -------         PROC          I2CSTART
-  C:4B99H         LINE#         106
-  C:4B99H         LINE#         107
-  C:4B99H         LINE#         108
-  C:4B9EH         LINE#         109
-  C:4BA3H         LINE#         110
-  C:4BA8H         LINE#         111
-  C:4BAAH         LINE#         112
+  C:4B9FH         LINE#         106
+  C:4B9FH         LINE#         107
+  C:4B9FH         LINE#         108
+  C:4BA4H         LINE#         109
+  C:4BA9H         LINE#         110
+  C:4BAEH         LINE#         111
+  C:4BB0H         LINE#         112
   -------         ENDPROC       I2CSTART
   -------         PROC          I2CSTOP
   C:0016H         LINE#         114
@@ -1618,10 +1619,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:42B7H         LINE#         138
   C:42B9H         LINE#         140
   C:42BBH         LINE#         141
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 28
+
+
   C:42BDH         LINE#         142
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 28
-
-
   C:42BFH         LINE#         143
   C:42C1H         LINE#         144
   -------         ENDPROC       _I2CWRITEDATA
@@ -1678,10 +1679,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   -------         DO            
   D:0006H         SYMBOL        addr
   -------         ENDDO         
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 29
+
+
   C:49D3H         LINE#         229
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 29
-
-
   C:49D7H         LINE#         230
   C:49D7H         LINE#         233
   C:49D9H         LINE#         235
@@ -1695,7 +1696,7 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
 
   -------         MODULE        KEYREMO
   C:0000H         SYMBOL        _ICE_DUMMY_
-  C:4A8EH         PUBLIC        _GetKey
+  C:4AAAH         PUBLIC        _GetKey
   C:4906H         PUBLIC        Scankey
   -------         PROC          SCANKEY
   C:4906H         LINE#         31
@@ -1716,15 +1717,15 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   -------         DO            
   B:0021H.1       SYMBOL        ready
   -------         ENDDO         
-  C:4A8EH         LINE#         51
-  C:4A8EH         LINE#         52
-  C:4A8EH         LINE#         56
-  C:4A92H         LINE#         57
-  C:4A94H         LINE#         59
-  C:4A9AH         LINE#         60
-  C:4AA0H         LINE#         61
-  C:4AA6H         LINE#         63
-  C:4AA8H         LINE#         64
+  C:4AAAH         LINE#         51
+  C:4AAAH         LINE#         52
+  C:4AAAH         LINE#         56
+  C:4AAEH         LINE#         57
+  C:4AB0H         LINE#         59
+  C:4AB6H         LINE#         60
+  C:4ABCH         LINE#         61
+  C:4AC2H         LINE#         63
+  C:4AC4H         LINE#         64
   -------         ENDPROC       _GETKEY
   -------         ENDMOD        KEYREMO
 
@@ -1738,10 +1739,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   X:0107H         PUBLIC        LowBatteryFlag
   B:0080H.1       PUBLIC        P0_1
   X:0108H         PUBLIC        UserRange
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 30
+
+
   B:00B0H.4       PUBLIC        P3_4
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 30
-
-
   B:00B0H.5       PUBLIC        P3_5
   C:4714H         PUBLIC        _SetAD5110Step
   C:3210H         PUBLIC        _MCU_SendCmdToDVR
@@ -1766,10 +1767,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   D:00E2H         PUBLIC        IFD
   X:0122H         PUBLIC        EncorderLenfloaat
   X:0124H         PUBLIC        EncorderLen
-  C:4BE9H         PUBLIC        GetBatteryVoltage
+  C:4BEFH         PUBLIC        GetBatteryVoltage
   C:447BH         PUBLIC        InitialTimerEvent
   C:4875H         PUBLIC        _isp_write
-  C:4BE2H         PUBLIC        GetBatteryBTH
+  C:4BE8H         PUBLIC        GetBatteryBTH
   X:0128H         PUBLIC        EncorderCountPN
   C:000EH         PUBLIC        isp_init
   X:0129H         PUBLIC        Decimal1
@@ -1798,10 +1799,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:4875H         LINE#         85
   C:4875H         LINE#         86
   C:4875H         LINE#         87
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 31
+
+
   C:4878H         LINE#         88
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 31
-
-
   C:487AH         LINE#         90
   C:487AH         LINE#         91
   C:4880H         LINE#         92
@@ -1858,10 +1859,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:3E6FH         LINE#         131
   C:3E7FH         LINE#         132
   C:3E7FH         LINE#         133
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 32
+
+
   C:3E81H         LINE#         134
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 32
-
-
   -------         ENDPROC       _MCULIB_PROTOCOLAPPEND
   -------         PROC          _MCULIB_PROTOCOLSENDCMDWITHPARAMNUM
   D:0007H         SYMBOL        ucType
@@ -1918,10 +1919,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:32DCH         LINE#         229
   C:32E9H         LINE#         231
   C:32ECH         LINE#         233
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 33
+
+
   C:3305H         LINE#         236
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 33
-
-
   C:332EH         LINE#         240
   C:3336H         LINE#         242
   C:3343H         LINE#         243
@@ -1978,10 +1979,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   -------         PROC          _MAPPING1
   X:01D7H         SYMBOL        fromValue
   X:01D9H         SYMBOL        fromRange
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 34
+
+
   X:01DCH         SYMBOL        toValue
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 34
-
-
   X:01DFH         SYMBOL        toRange
   -------         DO            
   X:01E2H         SYMBOL        a
@@ -2038,10 +2039,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:3EE7H         LINE#         380
   C:3EE9H         LINE#         382
   C:3EE9H         LINE#         384
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 35
+
+
   C:3EF1H         LINE#         385
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 35
-
-
   C:3EF1H         LINE#         386
   C:3EF9H         LINE#         387
   C:3EFFH         LINE#         390
@@ -2068,19 +2069,19 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   -------         DO            
   D:0006H         SYMBOL        max
   -------         ENDDO         
-  C:4BE2H         LINE#         413
-  C:4BE2H         LINE#         414
-  C:4BE2H         LINE#         415
-  C:4BE4H         LINE#         416
+  C:4BE8H         LINE#         413
+  C:4BE8H         LINE#         414
+  C:4BE8H         LINE#         415
+  C:4BEAH         LINE#         416
   -------         ENDPROC       GETBATTERYBTH
   -------         PROC          GETBATTERYVOLTAGE
   -------         DO            
   D:0006H         SYMBOL        max
   -------         ENDDO         
-  C:4BE9H         LINE#         424
-  C:4BE9H         LINE#         425
-  C:4BE9H         LINE#         426
-  C:4BEBH         LINE#         427
+  C:4BEFH         LINE#         424
+  C:4BEFH         LINE#         425
+  C:4BEFH         LINE#         426
+  C:4BF1H         LINE#         427
   -------         ENDPROC       GETBATTERYVOLTAGE
   -------         PROC          ENCORDERHANDLER
   -------         DO            
@@ -2098,10 +2099,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:2073H         LINE#         438
   C:2073H         LINE#         448
   C:2079H         LINE#         449
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 36
+
+
   C:2079H         LINE#         460
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 36
-
-
   C:20A9H         LINE#         461
   C:20D9H         LINE#         462
   C:2109H         LINE#         463
@@ -2158,10 +2159,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   -------         ENDPROC       ENCORDERHANDLER
   -------         PROC          MAIN_LOOP
   C:4A51H         LINE#         722
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 37
+
+
   C:4A51H         LINE#         723
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 37
-
-
   C:4A51H         LINE#         725
   C:4A5AH         LINE#         729
   C:4A5AH         LINE#         730
@@ -2218,10 +2219,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:3C7FH         LINE#         829
   C:3C82H         LINE#         830
   C:3C85H         LINE#         831
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 38
+
+
   C:3C88H         LINE#         833
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 38
-
-
   C:3C90H         LINE#         834
   C:3C90H         LINE#         838
   C:3CA3H         LINE#         839
@@ -2278,10 +2279,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:4752H         PUBLIC        _Printf
   C:16DFH         SYMBOL        L?0093
   -------         PROC          L?0092
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 39
+
+
   -------         ENDPROC       L?0092
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 39
-
-
   C:16DFH         SYMBOL        L?0093
   -------         PROC          _DOPRINT
   X:0206H         SYMBOL        fmt
@@ -2338,10 +2339,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:1872H         LINE#         106
   C:1887H         LINE#         107
   C:1889H         LINE#         109
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 40
+
+
   C:1889H         LINE#         110
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 40
-
-
   C:18AEH         LINE#         111
   C:18C4H         LINE#         112
   C:18C6H         LINE#         114
@@ -2398,10 +2399,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:1C31H         LINE#         192
   C:1C34H         LINE#         193
   C:1C34H         LINE#         194
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 41
+
+
   C:1C34H         LINE#         195
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 41
-
-
   -------         ENDPROC       _DOPRINT
   -------         PROC          _PRINTF
   X:01D8H         SYMBOL        fmt
@@ -2458,10 +2459,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:40C3H         PUBLIC        SysPowerHandler
   B:00E8H.1       PUBLIC        P4_1
   B:00E8H.2       PUBLIC        P4_2
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 42
+
+
   B:0080H.6       PUBLIC        P0_6
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 42
-
-
   B:00A0H.6       PUBLIC        P2_6
   B:00B0H.6       PUBLIC        P3_6
   B:00B0H.7       PUBLIC        P3_7
@@ -2518,10 +2519,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:40F7H         LINE#         125
   C:40F9H         LINE#         127
   C:40F9H         LINE#         129
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 43
+
+
   C:4109H         LINE#         130
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 43
-
-
   C:4109H         LINE#         131
   C:4109H         LINE#         132
   C:410BH         LINE#         133
@@ -2578,10 +2579,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:3000H         LINE#         204
   C:3006H         LINE#         205
   C:300BH         LINE#         206
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 44
+
+
   C:3015H         LINE#         207
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 44
-
-
   C:301AH         LINE#         209
   C:301CH         LINE#         210
   C:301CH         LINE#         211
@@ -2638,10 +2639,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:3145H         LINE#         288
   C:3149H         LINE#         290
   C:314BH         LINE#         292
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 45
+
+
   C:314EH         LINE#         294
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 45
-
-
   C:314EH         LINE#         295
   C:3162H         LINE#         296
   C:3166H         LINE#         297
@@ -2698,10 +2699,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:3D4FH         LINE#         372
   C:3D51H         LINE#         373
   C:3D53H         LINE#         374
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 46
+
+
   C:3D5AH         LINE#         375
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 46
-
-
   C:3D5CH         LINE#         377
   C:3D65H         LINE#         378
   C:3D6BH         LINE#         394
@@ -2758,10 +2759,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:4983H         LINE#         475
   C:4983H         LINE#         476
   C:4983H         LINE#         480
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 47
+
+
   C:4983H         LINE#         481
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 47
-
-
   C:4983H         LINE#         482
   C:4983H         LINE#         483
   C:4983H         LINE#         484
@@ -2783,7 +2784,7 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:0000H         SYMBOL        _ICE_DUMMY_
   X:0175H         PUBLIC        BATERY_STAT_TEMP
   X:0176H         PUBLIC        BattDetectHighStop_COUNT
-  C:4B74H         PUBLIC        _MCUTimerClrEventValid
+  C:4B7AH         PUBLIC        _MCUTimerClrEventValid
   X:0177H         PUBLIC        BattDetect1_COUNT
   X:0178H         PUBLIC        STAT1_temp
   X:0179H         PUBLIC        BattDetect2_COUNT
@@ -2798,12 +2799,12 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   X:017FH         PUBLIC        TEMP_LOW_WARN_COUNT
   B:0080H.1       PUBLIC        P0_1
   B:00E8H.2       PUBLIC        P4_2
-  C:4AC6H         PUBLIC        _MCUTimerDelayXms
+  C:4AE2H         PUBLIC        _MCUTimerDelayXms
   B:00A0H.6       PUBLIC        P2_6
   B:00B0H.7       PUBLIC        P3_7
   X:0180H         PUBLIC        g_usTimerCounter
-  C:4B37H         PUBLIC        _MCUTimerGetEventID
-  C:4B60H         PUBLIC        _MCUTimerGetEventTime
+  C:4B3DH         PUBLIC        _MCUTimerGetEventID
+  C:4B66H         PUBLIC        _MCUTimerGetEventTime
   X:0182H         PUBLIC        TEMP_HIGH_COUNT
   X:0183H         PUBLIC        BattDetectStartUp_COUNT
   C:3B79H         PUBLIC        _MCUTimerReactiveTimerEvent
@@ -2814,14 +2815,14 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   X:01C4H         PUBLIC        BatteryBTH
   C:46D3H         PUBLIC        _MCUTimerCancelTimerEvent
   C:003EH         PUBLIC        MCUTimerInitialTimerEvent
-  C:4BABH         PUBLIC        _MCUTimerCheckEventValid
+  C:4BB1H         PUBLIC        _MCUTimerCheckEventValid
   X:01C6H         PUBLIC        STAT1_Flag
   X:01C7H         PUBLIC        STAT2_Flag
   X:01C8H         PUBLIC        TEMP_NORMAL_COUNT
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 48
+
+
   X:01C9H         PUBLIC        TEMP_STAT
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 48
-
-
   C:39BBH         PUBLIC        _MCUTimerActiveTimerEvent
   C:3788H         PUBLIC        _MCUTimerCheckTimerEvent
   X:01CAH         PUBLIC        BattDetectHigh_COUNT
@@ -2834,62 +2835,62 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   X:01CFH         PUBLIC        TEMP_LOW_COUNT
   C:45B5H         PUBLIC        MCUTimerGetTimerCounter
   X:01D0H         PUBLIC        BattDetectMin_COUNT
-  C:4AC2H         SYMBOL        L?0357
+  C:4ADEH         SYMBOL        L?0357
   -------         PROC          L?0356
   -------         ENDPROC       L?0356
-  C:4AC2H         SYMBOL        L?0357
+  C:4ADEH         SYMBOL        L?0357
   -------         PROC          _MCUTIMERDELAYXMS
   D:0006H         SYMBOL        usNum
-  C:4AC6H         LINE#         115
-  C:4AC6H         LINE#         116
-  C:4AC6H         LINE#         117
-  C:4ACAH         LINE#         118
-  C:4ACAH         LINE#         119
-  C:4ACCH         LINE#         121
-  C:4ACCH         LINE#         122
-  C:4ACCH         LINE#         123
-  C:4ACFH         LINE#         124
-  C:4ACFH         LINE#         125
-  C:4AD1H         LINE#         127
-  C:4ADAH         LINE#         128
-  C:4ADAH         LINE#         129
-  C:4ADAH         LINE#         131
-  C:4ADAH         LINE#         133
-  C:4ADAH         LINE#         134
-  C:4ADAH         LINE#         135
-  C:4ADAH         LINE#         136
-  C:4ADAH         LINE#         137
+  C:4AE2H         LINE#         115
+  C:4AE2H         LINE#         116
+  C:4AE2H         LINE#         117
+  C:4AE6H         LINE#         118
+  C:4AE6H         LINE#         119
+  C:4AE8H         LINE#         121
+  C:4AE8H         LINE#         122
+  C:4AE8H         LINE#         123
+  C:4AEBH         LINE#         124
+  C:4AEBH         LINE#         125
+  C:4AEDH         LINE#         127
+  C:4AF6H         LINE#         128
+  C:4AF6H         LINE#         129
+  C:4AF6H         LINE#         131
+  C:4AF6H         LINE#         133
+  C:4AF6H         LINE#         134
+  C:4AF6H         LINE#         135
+  C:4AF6H         LINE#         136
+  C:4AF6H         LINE#         137
   -------         ENDPROC       _MCUTIMERDELAYXMS
   -------         PROC          _MCUTIMERGETEVENTTIME
   D:0007H         SYMBOL        ucEventIndex
-  C:4B60H         LINE#         144
-  C:4B60H         LINE#         145
-  C:4B60H         LINE#         146
-  C:4B73H         LINE#         147
+  C:4B66H         LINE#         144
+  C:4B66H         LINE#         145
+  C:4B66H         LINE#         146
+  C:4B79H         LINE#         147
   -------         ENDPROC       _MCUTIMERGETEVENTTIME
   -------         PROC          _MCUTIMERGETEVENTID
   D:0007H         SYMBOL        ucEventIndex
-  C:4B37H         LINE#         154
-  C:4B37H         LINE#         155
-  C:4B37H         LINE#         156
-  C:4B4BH         LINE#         157
+  C:4B3DH         LINE#         154
+  C:4B3DH         LINE#         155
+  C:4B3DH         LINE#         156
+  C:4B51H         LINE#         157
   -------         ENDPROC       _MCUTIMERGETEVENTID
   -------         PROC          _MCUTIMERCLREVENTVALID
   D:0007H         SYMBOL        ucEventIndex
-  C:4B74H         LINE#         165
-  C:4B74H         LINE#         166
-  C:4B74H         LINE#         167
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 49
+  C:4B7AH         LINE#         165
+  C:4B7AH         LINE#         166
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 49
 
 
-  C:4B86H         LINE#         168
+  C:4B7AH         LINE#         167
+  C:4B8CH         LINE#         168
   -------         ENDPROC       _MCUTIMERCLREVENTVALID
   -------         PROC          _MCUTIMERCHECKEVENTVALID
   D:0007H         SYMBOL        ucEventIndex
-  C:4BABH         LINE#         175
-  C:4BABH         LINE#         176
-  C:4BABH         LINE#         177
-  C:4BBBH         LINE#         178
+  C:4BB1H         LINE#         175
+  C:4BB1H         LINE#         176
+  C:4BB1H         LINE#         177
+  C:4BC1H         LINE#         178
   -------         ENDPROC       _MCUTIMERCHECKEVENTVALID
   -------         PROC          MCUTIMERGETTIMERCOUNTER
   -------         DO            
@@ -2938,10 +2939,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:389DH         LINE#         234
   C:38A6H         LINE#         236
   C:38ADH         LINE#         237
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 50
+
+
   C:38ADH         LINE#         239
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 50
-
-
   C:38B5H         LINE#         240
   -------         ENDPROC       _MCUTIMERCHECKTIMEREVENT
   -------         PROC          MCUTIMERINITIALTIMEREVENT
@@ -2998,10 +2999,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:46D3H         LINE#         301
   C:46D3H         LINE#         302
   C:46D3H         LINE#         303
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 51
+
+
   C:46D5H         LINE#         306
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 51
-
-
   C:46DFH         LINE#         307
   C:46DFH         LINE#         308
   C:46F5H         LINE#         309
@@ -3058,10 +3059,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:3ADBH         LINE#         373
   C:3ADBH         LINE#         377
   C:3ADBH         LINE#         378
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 52
+
+
   C:3AE3H         LINE#         380
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 52
-
-
   C:3AEFH         LINE#         384
   C:3AEFH         LINE#         385
   C:3AEFH         LINE#         386
@@ -3118,10 +3119,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:3B78H         LINE#         497
   -------         ENDPROC       _USERINTERFACETIMEREVENTPROC
   -------         PROC          SYSTIMERHANDLER
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 53
+
+
   -------         DO            
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 53
-
-
   X:01D1H         SYMBOL        ucTimerEventIndex
   X:01D2H         SYMBOL        ucTimerEventID
   X:01D3H         SYMBOL        usPresentTime
@@ -3178,10 +3179,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:00EDH         LINE#         573
   C:00F2H         LINE#         574
   C:00F6H         LINE#         575
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 54
+
+
   C:00F9H         LINE#         577
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 54
-
-
   C:00F9H         LINE#         578
   C:00FEH         LINE#         579
   C:0100H         LINE#         580
@@ -3238,10 +3239,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:0196H         LINE#         655
   C:0196H         LINE#         656
   C:01A2H         LINE#         657
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 55
+
+
   C:01A2H         LINE#         658
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 55
-
-
   C:01A9H         LINE#         659
   C:01A9H         LINE#         660
   C:01ACH         LINE#         661
@@ -3298,10 +3299,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:037AH         LINE#         736
   C:038CH         LINE#         737
   C:0394H         LINE#         738
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 56
+
+
   C:0394H         LINE#         739
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 56
-
-
   C:039BH         LINE#         740
   C:03A0H         LINE#         741
   C:03A6H         LINE#         742
@@ -3358,10 +3359,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:0492H         LINE#         828
   C:0495H         LINE#         829
   C:04A7H         LINE#         830
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 57
+
+
   C:04A7H         LINE#         832
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 57
-
-
   C:04ADH         LINE#         833
   C:04B2H         LINE#         834
   C:04B6H         LINE#         835
@@ -3418,10 +3419,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:0586H         LINE#         893
   C:0589H         LINE#         894
   C:0589H         LINE#         897
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 58
+
+
   C:058BH         LINE#         898
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 58
-
-
   C:05A5H         LINE#         899
   C:05A5H         LINE#         900
   C:05A9H         LINE#         901
@@ -3478,10 +3479,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:0686H         LINE#         958
   C:0686H         LINE#         959
   C:068BH         LINE#         960
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 59
+
+
   C:0690H         LINE#         961
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 59
-
-
   C:0690H         LINE#         962
   C:0698H         LINE#         963
   C:0698H         LINE#         964
@@ -3538,10 +3539,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:0767H         LINE#         1067
   C:076FH         LINE#         1074
   C:0770H         LINE#         1083
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 60
+
+
   C:0778H         LINE#         1084
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 60
-
-
   C:077AH         LINE#         1087
   C:077AH         LINE#         1088
   C:0785H         LINE#         1089
@@ -3598,10 +3599,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:0886H         LINE#         1167
   C:0898H         LINE#         1168
   C:0898H         LINE#         1169
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 61
+
+
   C:089DH         LINE#         1170
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 61
-
-
   C:08A3H         LINE#         1171
   C:08A8H         LINE#         1172
   C:08ACH         LINE#         1173
@@ -3658,10 +3659,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:09D9H         LINE#         1236
   C:09DCH         LINE#         1237
   C:09E3H         LINE#         1238
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 62
+
+
   C:09E3H         LINE#         1248
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 62
-
-
   C:09F2H         LINE#         1251
   C:0A0BH         LINE#         1252
   C:0A0BH         LINE#         1253
@@ -3718,10 +3719,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:0B03H         LINE#         1374
   C:0B03H         LINE#         1375
   C:0B0EH         LINE#         1376
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 63
+
+
   C:0B12H         LINE#         1378
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 63
-
-
   C:0B14H         LINE#         1379
   C:0B17H         LINE#         1380
   C:0B21H         LINE#         1381
@@ -3778,10 +3779,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:0C5BH         LINE#         1458
   C:0C60H         LINE#         1459
   C:0C69H         LINE#         1460
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 64
+
+
   C:0C69H         LINE#         1463
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 64
-
-
   C:0C71H         LINE#         1464
   C:0C71H         LINE#         1465
   C:0C7FH         LINE#         1466
@@ -3838,10 +3839,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:0D79H         LINE#         1612
   C:0D7CH         LINE#         1613
   C:0D7CH         LINE#         1627
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 65
+
+
   C:0D84H         LINE#         1628
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 65
-
-
   C:0D84H         LINE#         1630
   C:0D92H         LINE#         1631
   C:0D92H         LINE#         1632
@@ -3898,10 +3899,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:0E39H         LINE#         1705
   C:0E3AH         LINE#         1706
   C:0E40H         LINE#         1707
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 66
+
+
   C:0E40H         LINE#         1709
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 66
-
-
   C:0E43H         LINE#         1711
   C:0E4CH         LINE#         1712
   C:0E4CH         LINE#         1714
@@ -3958,10 +3959,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   -------         ENDMOD        ?C?CSTOPTR
 
   -------         MODULE        ?C?IMUL
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 67
+
+
   C:1330H         PUBLIC        ?C?IMUL
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 67
-
-
   -------         ENDMOD        ?C?IMUL
 
   -------         MODULE        ?C?UIDIV
@@ -4018,10 +4019,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
 
   -------         MODULE        ?C?LLDPTR
   C:15E1H         PUBLIC        ?C?LLDPTR
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2020  17:53:50  PAGE 68
+
+
   -------         ENDMOD        ?C?LLDPTR
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2020  09:23:01  PAGE 68
-
-
 
   -------         MODULE        ?C?LSTXDATA
   C:1601H         PUBLIC        ?C?LSTXDATA
@@ -4040,7 +4041,7 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   -------         ENDMOD        ?C?CCASE
 
   -------         MODULE        ABS
-  C:4BCBH         PUBLIC        _ABS
+  C:4BD1H         PUBLIC        _ABS
   -------         ENDMOD        ABS
 
   -------         MODULE        ?C?LLDIDATA
@@ -4075,5 +4076,5 @@ SYMBOL TABLE OF MODULE:  .\Output\ml070i_MRMCU (?C_STARTUP)
   C:16D3H         PUBLIC        ?C?PLDCODE
   -------         ENDMOD        ?C?PLDCODE
 
-Program Size: data=109.5 xdata=643 code=19424
+Program Size: data=109.5 xdata=643 code=19430
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
