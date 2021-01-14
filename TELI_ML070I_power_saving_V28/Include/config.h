@@ -70,8 +70,8 @@
 #define BTH_TEMP_MIN 	   		20//90
 #define BTH_TEMP_MAX 	 		1023
 
-#define BTH_TEMP_HIGH 	   		198//55//534// >55 degree
-//#define BTH_TEMP_HIGH 	   		171// >60 degree //ryan@2021/01/11
+//#define BTH_TEMP_HIGH 	   		198//55//534// >55 degree
+#define BTH_TEMP_HIGH 	   		171// >60 degree //ryan@2021/01/11
 
 #define BTH_TEMP_HIGH_WARN	   	238//561//  >50 degree
 #define BTH_TEMP_LOW_WARN 		(653-18)//789//<0 degree 836//744//   <-5 degree
