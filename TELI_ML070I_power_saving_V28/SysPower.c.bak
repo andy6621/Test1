@@ -357,7 +357,7 @@ void UserInterfaceBatteryChargeMode(EnumBatteryStatus enumSwitch)
 
 void UserInterfacePowerSwitch(EnumPowerAction enumSwitch)
 {
-	Printf("\r\n(PowerSwitch=%02x)",(WORD)enumSwitch);	
+	Printf("\r\n(UserInterfacePowerSwitch=%02x)",(WORD)enumSwitch);	
 
 	
     switch(enumSwitch)

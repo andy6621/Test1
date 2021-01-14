@@ -24,12 +24,15 @@
 #define MCU_PROTOCOL_CMD_DVR_SHUTDOWN		0x12	///DVR shutdown
 #define MCU_PROTOCOL_PROTOCOL_CMD_ENTER_ISP  0x30 ///isp programming MCU
 
+#define MCU_PROTOCOL_CMD_SET_CHARGE_CURRENT	0x85	//change the BAT of charge current for testing , 0:300mA 1:1A
+
+
 //MCU to DVR command 
-#define MCU_PROTOCOL_CMD_REPLY_MCU_FW  		0x80	//Reply MCU firmware version
-#define MCU_PROTOCOL_CMD_REGULAR_DATA   		0x81	//Regular data
-#define MCU_PROTOCOL_CMD_SYSTEM_SHUTDOWN   	0x82	//system shutdown
-#define MCU_PROTOCOL_CMD_ENTRY_FACTORY   		0x83	//Entry factory mode
-#define MCU_PROTOCOL_CMD_SLEEP_WAKE_UP   		0x84	//notice DVR wake up from the sleep mode
+#define MCU_PROTOCOL_CMD_REPLY_MCU_FW  			0x80	//Reply MCU firmware version
+#define MCU_PROTOCOL_CMD_REGULAR_DATA   			0x81	//Regular data
+#define MCU_PROTOCOL_CMD_SYSTEM_SHUTDOWN   		0x82	//system shutdown
+#define MCU_PROTOCOL_CMD_ENTRY_FACTORY   			0x83	//Entry factory mode
+#define MCU_PROTOCOL_CMD_SLEEP_WAKE_UP   			0x84	//notice DVR wake up from the sleep mode
 
 
 #define PROTOCOL_DATA_LENGTH								256

@@ -27,6 +27,7 @@ extern WORD BatteryBTH;
 extern StructBatteryInfoType g_stBatteryInfo ;
 extern BYTE	PowerFlag;
 extern BYTE Power_down_mode;
+extern BYTE DVRChangeCurrent;
 
 BYTE	 year1=0,year2=0,month=0,day=0,hour=0,minute=0,second=0;
 BYTE DVR_FACTORY_MODE=0;
@@ -282,6 +283,22 @@ case _CHG_CURR:  //P1_4
 			CCAPM2=0x00;	
 			P1_4=0;
 			}
+			
+		if(DVRChangeCurrent==0x10)	
+			{			
+			CCAP2L=0x80;  
+			CCAP2H =255-_CHARGE300mA;	
+			CCAPM2=0x42;	
+			Printf("(*DVRChangeCurrent=300mA)");
+			}
+		else if(DVRChangeCurrent==0x11)	
+			{
+			CCAP2L=0x80;  
+			CCAP2H =255-_CHARGE1000mA;	
+			CCAPM2=0x42;	
+			Printf("(*DVRChangeCurrent=1000mA)");
+			}
+		
 /*	
 		if(val==High_Current)
 			{

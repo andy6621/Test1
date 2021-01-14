@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MAIN                                                              12/22/2020 17:53:49 PAGE 1   
+C51 COMPILER V9.60.0.0   MAIN                                                              01/14/2021 16:13:45 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
@@ -44,7 +44,7 @@ line level    source
   34          BYTE  PWR_START_flag;
   35          BYTE LowBatteryFlag;
   36          BYTE PowerOffToOnFlag;
-  37          
+  37          BYTE DVRChangeCurrent=0;
   38          BYTE Power_down_mode=_DontgoingToPD;
   39            
   40          float EncorderLen=0;
@@ -62,7 +62,7 @@ line level    source
               WORD BTH_Temp=250;
               #endif
   54          #if (_DEBUG_MESSAGE_BatteryVoltage==ON)
-C51 COMPILER V9.60.0.0   MAIN                                                              12/22/2020 17:53:49 PAGE 2   
+C51 COMPILER V9.60.0.0   MAIN                                                              01/14/2021 16:13:45 PAGE 2   
 
               WORD Battery_Voltage_Temp  =835;
               #endif
@@ -126,7 +126,7 @@ line level    source
  114          {
  115   1              // Clear the magic mark
  116   1              unsigned char mark = 0x00;
-C51 COMPILER V9.60.0.0   MAIN                                                              12/22/2020 17:53:49 PAGE 3   
+C51 COMPILER V9.60.0.0   MAIN                                                              01/14/2021 16:13:45 PAGE 3   
 
  117   1              isp_init();
  118   1              isp_write(&mark, 0xEF, 0xFF, 1);
@@ -190,7 +190,7 @@ line level    source
  176   2          break;
  177   2      
  178   2        case MCU_PROTOCOL_CMD_REGULAR_DATA:     //Regular data
-C51 COMPILER V9.60.0.0   MAIN                                                              12/22/2020 17:53:49 PAGE 4   
+C51 COMPILER V9.60.0.0   MAIN                                                              01/14/2021 16:13:45 PAGE 4   
 
  179   2      
  180   2        //val=(((GET_BATTERY_CAPACITY()*32)/10000)*100)+(((GET_BATTERY_CAPACITY()*32)%10000)/100);
@@ -254,7 +254,7 @@ line level    source
  236   2          buf[5]=((EncorderLenfloaat/10)<<4)|(EncorderLenfloaat%10);
  237   2          #else
                   buf[5]=(EncorderLenfloaat<<4);
-C51 COMPILER V9.60.0.0   MAIN                                                              12/22/2020 17:53:49 PAGE 5   
+C51 COMPILER V9.60.0.0   MAIN                                                              01/14/2021 16:13:45 PAGE 5   
 
                   #endif
  240   2          buf[6]=EncorderCountPN;
@@ -318,7 +318,7 @@ line level    source
  296          
  297          
  298          void InitialTimerEvent(void)
-C51 COMPILER V9.60.0.0   MAIN                                                              12/22/2020 17:53:49 PAGE 6   
+C51 COMPILER V9.60.0.0   MAIN                                                              01/14/2021 16:13:45 PAGE 6   
 
  299          {
  300   1        MCUTimerInitialTimerEvent();  //clear all of timer event  
@@ -382,7 +382,7 @@ line level    source
  358   1         PowerFlag = ReadEEP(EEP_Powerflag);
  359   1         CameraVolt= ReadEEP(EEP_CameraVolt);
  360   1         PWR_START_flag= ReadEEP(EEP_DC12_PWR_START);
-C51 COMPILER V9.60.0.0   MAIN                                                              12/22/2020 17:53:49 PAGE 7   
+C51 COMPILER V9.60.0.0   MAIN                                                              01/14/2021 16:13:45 PAGE 7   
 
  361   1        PowerOffToOnFlag= ReadEEP(EEP_PowerOffToOnflag);
  362   1      
@@ -446,7 +446,7 @@ line level    source
  420   1      
  421   1      return max;
  422   1      }
-C51 COMPILER V9.60.0.0   MAIN                                                              12/22/2020 17:53:49 PAGE 8   
+C51 COMPILER V9.60.0.0   MAIN                                                              01/14/2021 16:13:45 PAGE 8   
 
  423          
  424          WORD GetBatteryVoltage(void)
@@ -510,7 +510,7 @@ line level    source
                   Printf("\r\nEncorderParaTemp1=%d ",(WORD)(EncorderParaTemp1*100));
                   Printf("\r\nEncorderParaTemp2=%d ",(WORD)(EncorderParaTemp2*100));
                   Printf("\r\nEncorderParaTemp3=%d ",(WORD)(EncorderParaTemp3*100));
-C51 COMPILER V9.60.0.0   MAIN                                                              12/22/2020 17:53:49 PAGE 9   
+C51 COMPILER V9.60.0.0   MAIN                                                              01/14/2021 16:13:45 PAGE 9   
 
                   Printf("\r\nEncorderParaTemp4=%d ",(WORD)(EncorderParaTemp4*100));
                   #endif
@@ -574,7 +574,7 @@ line level    source
  544   3            #if 0
                       EncorderLen=(30.625*EncorderParaTemp1*(temp_EncorderCountTemp))/1000;
                     #else
-C51 COMPILER V9.60.0.0   MAIN                                                              12/22/2020 17:53:49 PAGE 10  
+C51 COMPILER V9.60.0.0   MAIN                                                              01/14/2021 16:13:45 PAGE 10  
 
  547   3            EncorderLen=(30.625*EncorderParaTemp1*EncorderCountTemp)/1000;
  548   3            #endif
@@ -638,7 +638,7 @@ line level    source
  605   3            }
  606   2          #if 1
  607   2          else if(EncorderCountTemp>450&&EncorderCountTemp<=780)
-C51 COMPILER V9.60.0.0   MAIN                                                              12/22/2020 17:53:49 PAGE 11  
+C51 COMPILER V9.60.0.0   MAIN                                                              01/14/2021 16:13:45 PAGE 11  
 
  608   2            {
  609   3            #if 0
@@ -702,7 +702,7 @@ line level    source
  667   3            EncorderLen=EncorderOffset3+(34.896*EncorderParaTemp4*(EncorderCountTemp-780)/1000);
  668   3            #endif
  669   3      
-C51 COMPILER V9.60.0.0   MAIN                                                              12/22/2020 17:53:49 PAGE 12  
+C51 COMPILER V9.60.0.0   MAIN                                                              01/14/2021 16:13:45 PAGE 12  
 
  670   3            #if (HS_DEBUG==ON)  
                     Printf("\r\nEncorderCount=%d ",(WORD)EncorderCount);
@@ -766,7 +766,7 @@ line level    source
  729   1        while(1) 
  730   1        {
  731   2      
-C51 COMPILER V9.60.0.0   MAIN                                                              12/22/2020 17:53:49 PAGE 13  
+C51 COMPILER V9.60.0.0   MAIN                                                              01/14/2021 16:13:45 PAGE 13  
 
  732   2          #if (_DEBUG_MESSAGE_Monitor==ON)
                   while( RS_ready() ) 
@@ -830,7 +830,7 @@ line level    source
  791   1      {
  792   2        //UserInterfacePowerSwitch(_POWER_ACTION_AC_ON_TO_OFF);
  793   2        SET_POWER_STATUS(_POWER_STATUS_NORMAL); 
-C51 COMPILER V9.60.0.0   MAIN                                                              12/22/2020 17:53:49 PAGE 14  
+C51 COMPILER V9.60.0.0   MAIN                                                              01/14/2021 16:13:45 PAGE 14  
 
  794   2        SET_TARGET_POWER_STATUS(_POWER_STATUS_OFF);
  795   2        
@@ -849,76 +849,82 @@ line level    source
  808          void WaitPowerOn(void)
  809          {
  810   1      
- 811   1        Printf("\r\n(PSW going to power off...)");
+ 811   1        Printf("\r\n(Going to power off...)");
  812   1        SET_TARGET_POWER_STATUS(_POWER_STATUS_OFF);
- 813   1        CLR_DVR_SystemReadyNotic(); 
- 814   1        MCUTimerCancelTimerEvent( _SYSTEM_TIMER_EVENT_JUDGE_WDT_ECHO);    
- 815   1        CLR_DVR_Shutdown();
- 816   1        MCUTimerCancelTimerEvent( _USER_TIMER_EVENT_OSD_DVR_SHUTDOWN);
- 817   1      
- 818   1        //CLR_BATTERY_CAPACITY_HIGH_FLAG();
- 819   1      
- 820   1        while(1) 
- 821   1        {
- 822   2      
- 823   2            
- 824   2              #if (_DEBUG_MESSAGE_Monitor==ON)
+ 813   1      
+ 814   1        if(GET_DVR_EntrySleepMode()==TRUE)
+ 815   1          CLR_DVR_EntrySleepMode();
+ 816   1      
+ 817   1        CLR_DVR_SystemReadyNotic(); 
+ 818   1        MCUTimerCancelTimerEvent( _SYSTEM_TIMER_EVENT_JUDGE_WDT_ECHO);    
+ 819   1        CLR_DVR_Shutdown();
+ 820   1        MCUTimerCancelTimerEvent( _USER_TIMER_EVENT_OSD_DVR_SHUTDOWN);
+ 821   1      
+ 822   1        //CLR_BATTERY_CAPACITY_HIGH_FLAG();
+ 823   1        Power_down_mode=_DontgoingToPD;
+ 824   1      
+ 825   1        while(1) 
+ 826   1        {
+ 827   2      
+ 828   2            
+ 829   2              #if (_DEBUG_MESSAGE_Monitor==ON)
                       while( RS_ready() ) 
                       Monitor();        // for new monitor functions    
                       #endif  
- 828   2      
- 829   2            SysPowerHandler();  
- 830   2            SysTimerHandler();
- 831   2            Scankey();
- 832   2            
- 833   2            if(PowerFlag==ON)   //// POWER-ON
- 834   2            break;
- 835   2      
- 836   2            #if (_POWER_DOWN_ENABLE==ON)
- 837   2      
- 838   2            if((Power_down_mode==_DontgoingToPD)&&(GET_AC_PLUG()/*Check_ADAP_IN()*/==_FALSE))
- 839   2            {
- 840   3            Power_down_mode=_ReadyToPD;
- 841   3            MCUTimerActiveTimerEvent(SEC(10), _SYSTEM_TIMER_POWER_DOWN_MODE);
- 842   3            } 
- 843   2            else if(Check_ADAP_IN()==_TRUE)
- 844   2              {
- 845   3              Power_down_mode=_DontgoingToPD;
- 846   3              MCUTimerCancelTimerEvent( _SYSTEM_TIMER_POWER_DOWN_MODE);
- 847   3              }
- 848   2            else  if(Power_down_mode==_GoingToPD)
- 849   2              SET_MCU_POWER_DOWN_MODE();        
- 850   2      
- 851   2            #endif  
- 852   2            
- 853   2        }
- 854   1      
- 855   1      
-C51 COMPILER V9.60.0.0   MAIN                                                              12/22/2020 17:53:49 PAGE 15  
+ 833   2      
+ 834   2            SysPowerHandler();  
+ 835   2            SysTimerHandler();
+ 836   2            Scankey();
+ 837   2            
+ 838   2            if(PowerFlag==ON)   //// POWER-ON
+ 839   2            break;
+ 840   2      
+ 841   2            #if (_POWER_DOWN_ENABLE==ON)
+ 842   2      
+ 843   2            if((Power_down_mode==_DontgoingToPD)&&(GET_POWER_STATUS()==_POWER_STATUS_OFF)&&(GET_AC_PLUG()/*Check_AD
+             -AP_IN()*/==_FALSE))
+ 844   2            {
+ 845   3            Power_down_mode=_ReadyToPD;
+ 846   3            MCUTimerActiveTimerEvent(SEC(10), _SYSTEM_TIMER_POWER_DOWN_MODE);
+ 847   3            } 
+ 848   2            else if((Check_ADAP_IN()==_TRUE)||(((~P4>>3)& 0x01) ))
+ 849   2              {
+ 850   3              Power_down_mode=_DontgoingToPD;
+ 851   3              MCUTimerCancelTimerEvent( _SYSTEM_TIMER_POWER_DOWN_MODE);
+ 852   3              }
+ 853   2            else  if(Power_down_mode==_GoingToPD)
+ 854   2              SET_MCU_POWER_DOWN_MODE();        
+C51 COMPILER V9.60.0.0   MAIN                                                              01/14/2021 16:13:45 PAGE 15  
 
- 856   1        WriteEEP(EEP_PowerOffToOnflag,ON);
- 857   1        EncorderCount=0;
- 858   1        EncorderLenint=0;
- 859   1        EncorderLenfloaat=0;
- 860   1        EncorderCountPN=0;
- 861   1         RS2_in=0; //clean DVR CMD.
- 862   1        RS2_out=0;//clean DVR CMD.
- 863   1        //CLR_BATTERY_CAPACITY_LOW_FLAG();  
- 864   1              CLR_BATTERY_ABNORMAL();
- 865   1        SET_BATTERY_CHARGE_STATE(_BATT_STATUS_NONE);
- 866   1        SET_TARGET_POWER_STATUS(_POWER_STATUS_NORMAL);  
- 867   1        Printf("\r\n(Start up  Power On Mode...)");
- 868   1      
- 869   1        ISPCR = 0x20;/// reboot to AP.
- 870   1      
- 871   1      }
- 872          
+ 855   2      
+ 856   2            #endif  
+ 857   2            
+ 858   2        }
+ 859   1      
+ 860   1      
+ 861   1        WriteEEP(EEP_PowerOffToOnflag,ON);
+ 862   1        EncorderCount=0;
+ 863   1        EncorderLenint=0;
+ 864   1        EncorderLenfloaat=0;
+ 865   1        EncorderCountPN=0;
+ 866   1         RS2_in=0; //clean DVR CMD.
+ 867   1        RS2_out=0;//clean DVR CMD.
+ 868   1        //CLR_BATTERY_CAPACITY_LOW_FLAG();  
+ 869   1              CLR_BATTERY_ABNORMAL();
+ 870   1        SET_BATTERY_CHARGE_STATE(_BATT_STATUS_NONE);
+ 871   1        SET_TARGET_POWER_STATUS(_POWER_STATUS_NORMAL);  
+ 872   1        Printf("\r\n(Start up  Power On Mode...)");
+ 873   1      
+ 874   1        ISPCR = 0x20;/// reboot to AP.
+ 875   1      
+ 876   1      }
+ 877          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   3118    ----
-   CONSTANT SIZE    =    123    ----
-   XDATA SIZE       =    111      94
+   CODE SIZE        =   3164    ----
+   CONSTANT SIZE    =    119    ----
+   XDATA SIZE       =    112      94
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

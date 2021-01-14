@@ -162,6 +162,7 @@ BYTE MCUTimerGetEventID(BYTE ucEventIndex)
 // Output Value : None
 //--------------------------------------------------
 
+
 void MCUTimerClrEventValid(BYTE ucEventIndex)
 {
     CLR_EVENT_VALID(ucEventIndex);
@@ -1024,7 +1025,9 @@ switch(enumEventID)
 		//#if (_DEBUG_MESSAGE_SysTimerEvent==ON)
 		//GraphicsPrint(CYAN,">");
 		//#endif
-		
+			  if(PowerFlag==OFF)
+		  	MCUTimerActiveTimerEvent(SEC(0.1/*1*/), _SYSTEM_TIMER_EVENT_JUDGE_BATT_STATE);
+			  else
 		MCUTimerActiveTimerEvent(SEC(0.3/*1*/), _SYSTEM_TIMER_EVENT_JUDGE_BATT_STATE);
 			#else
 			SET_BATTERY_CAPACITY(BatteryVoltage);
@@ -1305,7 +1308,9 @@ case _SYSTEM_TIMER_EVENT_BATTERY_LOW_PWR_OFF:
 
 			#endif	
 		//}
-		        	
+		  if(PowerFlag==OFF)
+		  	MCUTimerActiveTimerEvent(SEC(0.1/*1*/), _SYSTEM_TIMER_EVENT_JUDGE_BTH_STATE);
+		  	else
 		MCUTimerActiveTimerEvent(SEC(0.3/*1*/), _SYSTEM_TIMER_EVENT_JUDGE_BTH_STATE);
 		break;
 
@@ -1509,15 +1514,18 @@ case _SYSTEM_TIMER_EVENT_BATTERY_LOW_PWR_OFF:
 										
 										#if(_DEBUG_MESSAGE_SysTimerEvent==ON)
 										GraphicsPrint(RED,"( Low Voltage <11.8V or < 11.6V shut down)");
-										#endif																			
+										#endif	
 										MCUTimerActiveTimerEvent(SEC(0.1), _SYSTEM_TIMER_EVENT_JUDGE_PSW_STATE);	
 										}
 										else	if((GET_BATTERY_STATE()==_BATT_STATUS_CAPACITY_MIN)&&(PowerFlag==ON)&&(GET_AC_PLUG()==_FALSE))
 										{
 										PowerFlag=OFF;
 										WriteEEP(EEP_Powerflag,PowerFlag);
+									
+										if(GET_DVR_EntrySleepMode()==TRUE)
+										CLR_DVR_EntrySleepMode();
 										}
-										CLR_BATTERY_CAPACITY_HIGH_FLAG();	
+										CLR_BATTERY_CAPACITY_HIGH_FLAG();				
 										SET_CHARGE_START_FLAG();
 									break;
 

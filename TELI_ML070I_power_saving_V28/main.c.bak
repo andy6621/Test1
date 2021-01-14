@@ -32,7 +32,11 @@ extern bit	AccessEnable;
 BYTE	PowerFlag;
 BYTE	CameraVolt;
 BYTE	PWR_START_flag;
-
+BYTE LowBatteryFlag;
+BYTE PowerOffToOnFlag;
+BYTE DVRChangeCurrent=0;
+BYTE Power_down_mode=_DontgoingToPD;
+	
 float EncorderLen=0;
 WORD EncorderLen_Offset=0;
 BYTE EncorderLenint=0,EncorderCountPN=0,EncorderCountPN_offset=0;
@@ -63,10 +67,10 @@ extern DATA BYTE RS2_out;
 extern StructPowerInfoType idata g_stPowerInfo ;
 extern DATA WORD keytic;
 extern bit RepeatKey;
+extern BYTE IE_Temp;
 
 struct RegisterInfo UserRange={0,40,21};
 struct RegisterInfo AD5110Range={0,40,21};
-
 
 BYTE	DebugLevel;
 
@@ -184,13 +188,13 @@ switch(ucType)
 		val=(val/10);
 /*
 	   if(GET_BATTERY_STATE()==_BATT_STATUS_CAPACITY_LEVEL0)
-		val=119;	
+		val=121;	
 	else if(GET_BATTERY_STATE()==_BATT_STATUS_CAPACITY_LEVEL1)
-		val=122;	
+		val=127;	
 	else if(GET_BATTERY_STATE()==_BATT_STATUS_CAPACITY_LEVEL2)
 		val=132;
 	else if(GET_BATTERY_STATE()==_BATT_STATUS_CAPACITY_LEVEL3)
-		val=144;	
+		val=146;	
 	else	 if(GET_BATTERY_STATE()==_BATT_STATUS_CAPACITY_LEVEL4)	
 		val=155;
 	else if(GET_BATTERY_STATE()==_BATT_STATUS_CAPACITY_MIN)
@@ -201,9 +205,9 @@ switch(ucType)
 		val=164;
 	else if(GET_BATTERY_STATE()==_BATT_STATUS_CAPACITY_NO_STARTUP)
 		val=117;
-	//else	 if(GET_BATTERY_STATE()==_BATT_STATUS_NO_BATT)	
-	//	val=100;
-	*/
+	else	 if(GET_BATTERY_STATE()==_BATT_STATUS_NO_BATT)	
+		val=0;
+*/
 
 	#else
 	val=((((GET_BATTERY_CAPACITY()*(32+1))/*-800*/)/10000)*100)+((((GET_BATTERY_CAPACITY()*(32+1))/*-800*/)%10000)/100);
@@ -354,6 +358,45 @@ void LoadEEPROM (void)
 	 PowerFlag = ReadEEP(EEP_Powerflag);
 	 CameraVolt= ReadEEP(EEP_CameraVolt);
 	 PWR_START_flag= ReadEEP(EEP_DC12_PWR_START);
+	PowerOffToOnFlag= ReadEEP(EEP_PowerOffToOnflag);
+
+	if(ReadEEP(EEP_LowBattery_Flag))
+		SET_BATTERY_CAPACITY_LOW_FLAG();
+
+	if(PWR_START_flag==ON)
+	{
+		if(PowerFlag==OFF)
+		{
+		WriteEEP(EEP_Powerflag,ON);
+		PowerFlag=ON;
+		}
+		
+		if(PowerOffToOnFlag==ON)
+			{
+			WriteEEP(EEP_PowerOffToOnflag,OFF);
+			PowerOffToOnFlag=OFF;
+			}
+
+	}	
+	else //PWR_START_flag==OFF
+		{
+			
+			if(PowerOffToOnFlag==ON)
+			{
+			WriteEEP(EEP_Powerflag,ON);
+			PowerFlag=ON;
+
+			
+			WriteEEP(EEP_PowerOffToOnflag,OFF);
+			PowerOffToOnFlag=OFF;
+			}
+			else if(PowerFlag==ON)
+				{
+				WriteEEP(EEP_Powerflag,OFF);
+				PowerFlag=OFF;				
+				}
+		}
+
 }
 
 WORD GetADCValue(BYTE sel)
@@ -736,8 +779,11 @@ InitialTimerEvent();
 SetAD5110Step(CameraVolt);
  Printf("\r\n(CameraVolt=%d)",(WORD)CameraVolt);
 
-if(PWR_START_flag==ON)
-	PowerFlag=ON;
+//if(PWR_START_flag==ON)
+//	PowerFlag=ON;
+
+if((GET_BATTERY_CAPACITY_LOW_FLAG()==_TRUE)&&(Check_ADAP_IN()==_FALSE))
+	PowerFlag=OFF;
 
   if(PowerFlag==ON)
   SET_TARGET_POWER_STATUS(_POWER_STATUS_NORMAL);
@@ -764,12 +810,26 @@ void WaitPowerOn(void)
 
 	Printf("\r\n(PSW going to power off...)");
 	SET_TARGET_POWER_STATUS(_POWER_STATUS_OFF);
+#if 1
+	if(GET_DVR_EntrySleepMode()==TRUE)
+		{
+		#if 0
+		CLR_DVR_EntrySleepMode();
+		CLR_PCON5V();
+		CLR_PCON3V3_TW();
+		#endif
+		Printf("\r\n(SLEEP issue)");
+		CLR_DVR_EntrySleepMode();
+		}
+	#endif
+	
 	CLR_DVR_SystemReadyNotic();	
 	MCUTimerCancelTimerEvent( _SYSTEM_TIMER_EVENT_JUDGE_WDT_ECHO);		
 	CLR_DVR_Shutdown();
 	MCUTimerCancelTimerEvent( _USER_TIMER_EVENT_OSD_DVR_SHUTDOWN);
 
 	//CLR_BATTERY_CAPACITY_HIGH_FLAG();
+	Power_down_mode=_DontgoingToPD;
 
 	while(1) 
 	{
@@ -786,9 +846,30 @@ void WaitPowerOn(void)
 			
 			if(PowerFlag==ON)   //// POWER-ON
 			break;
-		
+
+			#if (_POWER_DOWN_ENABLE==ON)
+
+			if((Power_down_mode==_DontgoingToPD)&&(GET_POWER_STATUS()==_POWER_STATUS_OFF)&&(GET_AC_PLUG()/*Check_ADAP_IN()*/==_FALSE))
+			{
+			Power_down_mode=_ReadyToPD;
+			MCUTimerActiveTimerEvent(SEC(10), _SYSTEM_TIMER_POWER_DOWN_MODE);
+			//Printf("(D1)");
+			}	
+			else if((Check_ADAP_IN()==_TRUE)||(((~P4>>3)& 0x01) ))
+				{
+				//Printf("(D2)");
+				Power_down_mode=_DontgoingToPD;
+				MCUTimerCancelTimerEvent( _SYSTEM_TIMER_POWER_DOWN_MODE);
+				}
+			else	if(Power_down_mode==_GoingToPD)
+				SET_MCU_POWER_DOWN_MODE();				
+
+			#endif	
+			
 	}
 
+
+	WriteEEP(EEP_PowerOffToOnflag,ON);
 	EncorderCount=0;
 	EncorderLenint=0;
 	EncorderLenfloaat=0;

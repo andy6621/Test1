@@ -1,8 +1,3 @@
----- SET_MCU_POWER_DOWN_MODE Matches (7 in 5 files) ----
-CPU.c:222:void SET_MCU_POWER_DOWN_MODE(void)
-CPU.c:225:	Printf("(SET_MCU_POWER_DOWN_MODE...)");
-CPU.h (include):129:void SET_MCU_POWER_DOWN_MODE(void);
-Main.c:849:				SET_MCU_POWER_DOWN_MODE();				
-Main.h (include):84:extern void SET_MCU_POWER_DOWN_MODE(void);
-SysTimer.c:104:extern void SET_MCU_POWER_DOWN_MODE(void);
-SysTimer.c:1715:		//SET_MCU_POWER_DOWN_MODE();
+---- GET_TARGET_POWER_STATUS Matches (2 in 2 files) ----
+SysPower.c:97:    switch(GET_TARGET_POWER_STATUS())
+Typedefs.h (include):103:#define GET_TARGET_POWER_STATUS()           (g_stPowerInfo.b4PowerAction)

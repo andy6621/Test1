@@ -371,9 +371,6 @@ if ( RS2_ready())
 							CLR_DVR_Shutdown();
 							PowerFlag=OFF;
 							WriteEEP(EEP_Powerflag,PowerFlag);
-
-							if(GET_DVR_EntrySleepMode()==TRUE)
-							CLR_DVR_EntrySleepMode();
 							}
 							if((PowerFlag==ON)&&(protocol_data[0]==2))
 							{
@@ -386,8 +383,6 @@ if ( RS2_ready())
 							#if(_DEBUG_MESSAGE_UART_Protocol==ON)	
 							GraphicsPrint(RED,"\r\n(CMD:LOW Batt volt. shutdown)");	
 							#endif	
-							if(GET_DVR_EntrySleepMode()==TRUE)
-							CLR_DVR_EntrySleepMode();
 							}
 							
 							MCUTimerCancelTimerEvent(_USER_TIMER_EVENT_OSD_DVR_SHUTDOWN);							

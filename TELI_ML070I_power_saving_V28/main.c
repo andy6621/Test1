@@ -34,7 +34,7 @@ BYTE	CameraVolt;
 BYTE	PWR_START_flag;
 BYTE LowBatteryFlag;
 BYTE PowerOffToOnFlag;
-
+BYTE DVRChangeCurrent=0;
 BYTE Power_down_mode=_DontgoingToPD;
 	
 float EncorderLen=0;
@@ -808,14 +808,19 @@ else
 void WaitPowerOn(void)
 {
 
-	Printf("\r\n(PSW going to power off...)");
+	Printf("\r\n(Going to power off...)");
 	SET_TARGET_POWER_STATUS(_POWER_STATUS_OFF);
+
+	if(GET_DVR_EntrySleepMode()==TRUE)
+		CLR_DVR_EntrySleepMode();
+
 	CLR_DVR_SystemReadyNotic();	
 	MCUTimerCancelTimerEvent( _SYSTEM_TIMER_EVENT_JUDGE_WDT_ECHO);		
 	CLR_DVR_Shutdown();
 	MCUTimerCancelTimerEvent( _USER_TIMER_EVENT_OSD_DVR_SHUTDOWN);
 
 	//CLR_BATTERY_CAPACITY_HIGH_FLAG();
+	Power_down_mode=_DontgoingToPD;
 
 	while(1) 
 	{
@@ -835,12 +840,12 @@ void WaitPowerOn(void)
 
 			#if (_POWER_DOWN_ENABLE==ON)
 
-			if((Power_down_mode==_DontgoingToPD)&&(GET_AC_PLUG()/*Check_ADAP_IN()*/==_FALSE))
+			if((Power_down_mode==_DontgoingToPD)&&(GET_POWER_STATUS()==_POWER_STATUS_OFF)&&(GET_AC_PLUG()/*Check_ADAP_IN()*/==_FALSE))
 			{
 			Power_down_mode=_ReadyToPD;
 			MCUTimerActiveTimerEvent(SEC(10), _SYSTEM_TIMER_POWER_DOWN_MODE);
 			}	
-			else if(Check_ADAP_IN()==_TRUE)
+			else if((Check_ADAP_IN()==_TRUE)||(((~P4>>3)& 0x01) ))
 				{
 				Power_down_mode=_DontgoingToPD;
 				MCUTimerCancelTimerEvent( _SYSTEM_TIMER_POWER_DOWN_MODE);
