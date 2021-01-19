@@ -216,7 +216,7 @@ if ( RS2_ready())
 						GraphicsPrint(CYAN,"\r\n(CMD:DISTANCE_RESET)");	
 						#endif												
 						//SET_DVR_DistanceReset();					
-						MCUTimerActiveTimerEvent(SEC(1),_USER_TIMER_EVENT_OSD_DISTANCE_RESET);
+						MCUTimerActiveTimerEvent(SEC(0.1),_USER_TIMER_EVENT_OSD_DISTANCE_RESET);
 						break;
 					case MCU_PROTOCOL_CMD_ENCODER_SET: 	
 						#if(_DEBUG_MESSAGE_UART_Protocol==ON)	

@@ -14,7 +14,7 @@
 //-----------------------------------------------------------------------------
 #define	MCU_FW_Major			0x00	
 #define	MCU_FW_Sub0			0x00		
-#define	MCU_FW_Sub1			0x30	
+#define	MCU_FW_Sub1			0x31	
 
 //-----------------------------------------------------------------------------
 //		Compiler
@@ -65,20 +65,24 @@
 //#define BATTERY_CAPACITY_HIGH_STOP        	936//16.4V stop charge
 
 //#define BATTERY_CAPACITY_HIGH_STOP        	960//16.8V stop charge
-
+ 
 #if 1  //these are sean's test tempature of result
 #define BTH_TEMP_MIN 	   		20//90
 #define BTH_TEMP_MAX 	 		1023
 
 //#define BTH_TEMP_HIGH 	   		198//55//534// >55 degree
-#define BTH_TEMP_HIGH 	   		171// >60 degree //ryan@2021/01/11
+#define BTH_TEMP_HIGH 	   		194// >=60 degree //ryan@2021/01/18
 
-#define BTH_TEMP_HIGH_WARN	   	238//561//  >50 degree
+//#define BTH_TEMP_HIGH_WARN	   	238//561//  >50 degree
+#define BTH_TEMP_HIGH_WARN	   	214//   >=55 degree //ryan@2021/01/18
+
 #define BTH_TEMP_LOW_WARN 		(653-18)//789//<0 degree 836//744//   <-5 degree
 #define BTH_TEMP_LOW 	   		(746-5)//868//751///<-10 degree
 
 
-#define CHARGE_TEMP_HIGH   		258//586///45 degree
+//#define CHARGE_TEMP_HIGH   		258//586///45 degree
+#define CHARGE_TEMP_HIGH   		194//>=60 degree //ryan@2021/01/18
+
 //#define CHARGE_TEMP_LOW   		706//<10 degree 789//736///0 degree
 #define CHARGE_TEMP_LOW   		789///0 degree
 
