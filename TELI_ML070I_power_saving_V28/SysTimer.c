@@ -1019,7 +1019,6 @@ switch(enumEventID)
 			BattDetectStartUp_COUNT=0;
 			}
 
-			
 			SET_BATTERY_STATE(BATERY_STAT);
 	}
 		//#if (_DEBUG_MESSAGE_SysTimerEvent==ON)
@@ -1195,7 +1194,7 @@ case _SYSTEM_TIMER_EVENT_BATTERY_LOW_PWR_OFF:
 		PowerFlag=ON;
 
 			
-		if(TEMP_HIGH_COUNT==20)
+		if(TEMP_HIGH_COUNT==TempADC_Counts)
 		{
 			TEMP_STAT=_BATT_STATUS_TEMP_HIGH;
 			TEMP_HIGH_COUNT=0;
@@ -1204,7 +1203,7 @@ case _SYSTEM_TIMER_EVENT_BATTERY_LOW_PWR_OFF:
 			CLR_NO_BATTERY();
 		}
 
-		if(TEMP_HIGH_WARN_COUNT==20)
+		if(TEMP_HIGH_WARN_COUNT==TempADC_Counts)
 		{
 			TEMP_STAT=_BATT_STATUS_TEMP_HIGH_WARN;
 			TEMP_HIGH_WARN_COUNT=0;
@@ -1213,7 +1212,7 @@ case _SYSTEM_TIMER_EVENT_BATTERY_LOW_PWR_OFF:
 			CLR_NO_BATTERY();		
 		}
 
-		if(TEMP_NORMAL_COUNT==20)
+		if(TEMP_NORMAL_COUNT==TempADC_Counts)
 		{
 			TEMP_STAT=_BATT_STATUS_TEMP_NORMAL;
 			TEMP_NORMAL_COUNT=0;
@@ -1222,7 +1221,7 @@ case _SYSTEM_TIMER_EVENT_BATTERY_LOW_PWR_OFF:
 			CLR_NO_BATTERY();		
 		}
 
-		if(TEMP_LOW_WARN_COUNT==20)
+		if(TEMP_LOW_WARN_COUNT==TempADC_Counts)
 		{
 			TEMP_STAT=_BATT_STATUS_TEMP_LOW_WARN;
 			TEMP_LOW_WARN_COUNT=0;
@@ -1231,7 +1230,7 @@ case _SYSTEM_TIMER_EVENT_BATTERY_LOW_PWR_OFF:
 			CLR_NO_BATTERY();			
 		}
 
-		if(TEMP_LOW_COUNT==20)
+		if(TEMP_LOW_COUNT==TempADC_Counts)
 		{
 			TEMP_STAT=_BATT_STATUS_TEMP_LOW;
 			TEMP_LOW_COUNT=0;
@@ -1263,7 +1262,7 @@ case _SYSTEM_TIMER_EVENT_BATTERY_LOW_PWR_OFF:
 				//CLR_CHARGE_TMEP_ABNORMAL();
 				}
 				
-				if(CHARGE_TEMP_ABNORMAL==20)
+				if(CHARGE_TEMP_ABNORMAL==TempADC_Counts)
 					{
 					CHARGE_TEMP_ABNORMAL=0;
 						if((GET_AC_PLUG()==_TRUE)&&(GET_NO_BATTERY()==_FALSE))			
@@ -1272,7 +1271,7 @@ case _SYSTEM_TIMER_EVENT_BATTERY_LOW_PWR_OFF:
 					//	if(GET_BATTERY_CHARGE_STATE()==_BATT_STATUS_NO_BATT)	
 					//		CLR_CHARGE_TMEP_ABNORMAL();											
 					}
-				else	if(CHARGE_TEMP_NORMAL==20)
+				else	if(CHARGE_TEMP_NORMAL==TempADC_Counts)
 					{
 					CHARGE_TEMP_NORMAL=0;
 					CLR_CHARGE_TMEP_ABNORMAL();
@@ -1311,7 +1310,7 @@ case _SYSTEM_TIMER_EVENT_BATTERY_LOW_PWR_OFF:
 		  if(PowerFlag==OFF)
 		  	MCUTimerActiveTimerEvent(SEC(0.1/*1*/), _SYSTEM_TIMER_EVENT_JUDGE_BTH_STATE);
 		  	else
-		MCUTimerActiveTimerEvent(SEC(0.3/*1*/), _SYSTEM_TIMER_EVENT_JUDGE_BTH_STATE);
+		MCUTimerActiveTimerEvent(SEC(0.2/*0.3*//*1*/), _SYSTEM_TIMER_EVENT_JUDGE_BTH_STATE);
 		break;
 
     case _SYSTEM_TIMER_EVENT_JUDGE_WDT_ECHO:
@@ -1525,6 +1524,15 @@ case _SYSTEM_TIMER_EVENT_BATTERY_LOW_PWR_OFF:
 										if(GET_DVR_EntrySleepMode()==TRUE)
 										CLR_DVR_EntrySleepMode();
 										}
+
+										if(GET_DVR_EntrySleepMode()==_TRUE)
+										{
+										SET_TARGET_POWER_STATUS(_POWER_STATUS_NORMAL);
+										#if (_DEBUG_MESSAGE_SysTimerEvent==ON)
+				   						GraphicsPrint(RED,"(MCU_SLEEP_TO_NORMAL_MODE: Low Voltage <12V)");    
+										#endif	
+										}
+										
 										CLR_BATTERY_CAPACITY_HIGH_FLAG();				
 										SET_CHARGE_START_FLAG();
 									break;
@@ -1532,6 +1540,13 @@ case _SYSTEM_TIMER_EVENT_BATTERY_LOW_PWR_OFF:
 								 case _BATT_STATUS_CAPACITY_LEVEL0:
 									 CLR_BATTERY_CAPACITY_HIGH_FLAG();	 
 									//  CLR_BATTERY_CAPACITY_LOW_FLAG();	
+										if(GET_DVR_EntrySleepMode()==_TRUE)
+										{
+										SET_TARGET_POWER_STATUS(_POWER_STATUS_NORMAL);
+										#if (_DEBUG_MESSAGE_SysTimerEvent==ON)
+				   						GraphicsPrint(RED,"(MCU_SLEEP_TO_NORMAL_MODE: Low Voltage <12V)");    
+										#endif	
+										}
 								 	break;
 								 case _BATT_STATUS_CAPACITY_LEVEL1:								 	
 								 case _BATT_STATUS_CAPACITY_LEVEL2:
