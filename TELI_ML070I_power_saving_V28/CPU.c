@@ -213,7 +213,7 @@ void InitCPU(void)
 		
 
 	P3M0=0x0C;
-	P3M1=0x00|0x30;//p3.4 and P3.5 set push pull mode ryan@20210222
+	P3M1=0x00;//|0x30;//p3.4 and P3.5 set push pull mode ryan@20210222
 	P4M0=0x0C;
 	P4M1=0x00;
 

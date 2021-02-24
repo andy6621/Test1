@@ -14,6 +14,7 @@
 #include "HS_DVRProtocol.h"
 #include "keyremo.h"
 #include "Etc_eep.h"
+#include "reg.h"
 
 bit protocol_escape_flag;
 BYTE protocol_state=0;
@@ -194,7 +195,7 @@ if ( RS2_ready())
 							}
 						if(GET_DVR_WDTkickDisable()==_FALSE)
 						MCUTimerActiveTimerEvent(SEC(10), _SYSTEM_TIMER_EVENT_JUDGE_WDT_ECHO);
-						
+						P3M1=0x00|0x30;//p3.4 and P3.5 set push pull mode ryan@20210223
 						break;
 					case MCU_PROTOCOL_CMD_WATCH_DOG_KICK:
 						#if(_DEBUG_MESSAGE_UART_Protocol==ON)	
