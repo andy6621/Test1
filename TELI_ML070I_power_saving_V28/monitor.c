@@ -734,7 +734,18 @@ void Monitor(void)
 		Printf("\r\nPowerFlag=%02x",(WORD)ReadEEP(EEP_Powerflag));	
 		Printf("\r\nCameraVolt=%d",(WORD)ReadEEP(EEP_CameraVolt));	
 		Printf("\r\nPWR_START_flag=%02x",(WORD)ReadEEP(EEP_DC12_PWR_START));	
-			 
+	
+	Printf("\r\nEncorder1=%02x",(WORD)ReadEEP(EEP_Encorder1));	
+	Printf("\r\nDecimal1=%02x",(WORD)ReadEEP(EEP_Decimal1));	
+
+	Printf("\r\nEncorder2=%02x",(WORD)ReadEEP(EEP_Encorder2));	
+	Printf("\r\nDecimal2=%02x",(WORD)ReadEEP(EEP_Decimal2));	
+
+	Printf("\r\nEncorder3=%02x",(WORD)ReadEEP(EEP_Encorder3));	
+	Printf("\r\nDecimal3=%02x",(WORD)ReadEEP(EEP_Decimal3));	
+
+	Printf("\r\nEncorder4=%02x",(WORD)ReadEEP(EEP_Encorder4));	
+	Printf("\r\nDecimal4=%02x",(WORD)ReadEEP(EEP_Decimal4));	
 	}
 		/*
 	else if( !stricmp( argv[0], "&" ) ) {

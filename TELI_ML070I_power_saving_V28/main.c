@@ -360,6 +360,18 @@ void LoadEEPROM (void)
 	 PWR_START_flag= ReadEEP(EEP_DC12_PWR_START);
 	PowerOffToOnFlag= ReadEEP(EEP_PowerOffToOnflag);
 
+	Encorder1= ((ReadEEP(EEP_Encorder1)>>4)*10)+(0x0f&ReadEEP(EEP_Encorder1));
+	Decimal1= ((ReadEEP(EEP_Decimal1)>>4)*10)+(0x0f&ReadEEP(EEP_Decimal1));
+
+	Encorder2= ((ReadEEP(EEP_Encorder2)>>4)*10)+(0x0f&ReadEEP(EEP_Encorder2));
+	Decimal2= ((ReadEEP(EEP_Decimal2)>>4)*10)+(0x0f&ReadEEP(EEP_Decimal2));
+
+	Encorder3= ((ReadEEP(EEP_Encorder3)>>4)*10)+(0x0f&ReadEEP(EEP_Encorder3));
+	Decimal3= ((ReadEEP(EEP_Decimal3)>>4)*10)+(0x0f&ReadEEP(EEP_Decimal3));
+
+	Encorder4= ((ReadEEP(EEP_Encorder4)>>4)*10)+(0x0f&ReadEEP(EEP_Encorder4));
+	Decimal4= ((ReadEEP(EEP_Decimal4)>>4)*10)+(0x0f&ReadEEP(EEP_Decimal4));
+
 	if(ReadEEP(EEP_LowBattery_Flag))
 		SET_BATTERY_CAPACITY_LOW_FLAG();
 
@@ -821,6 +833,7 @@ void WaitPowerOn(void)
 
 	//CLR_BATTERY_CAPACITY_HIGH_FLAG();
 	Power_down_mode=_DontgoingToPD;
+	P3M1=0x00;//p3.4 and P3.5 set output ryan@20210226
 
 	while(1) 
 	{

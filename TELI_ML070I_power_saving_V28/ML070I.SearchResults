@@ -1,7 +1,6 @@
----- BATTERY_CAPACITY_NO_STARTUP Matches (6 in 3 files) ----
-Config.h (include):#define BATTERY_CAPACITY_NO_STARTUP 	675//<11.8
-CPU.c:	GraphicsPrint(MAGENTA,"(BATTERY_CAPACITY_NO_STARTUP)");	
-SysTimer.c:				else if((BatteryVoltage>BATTERY_CAPACITY_MIN)&&(BatteryVoltage<=BATTERY_CAPACITY_NO_STARTUP))
-SysTimer.c:				else if((BatteryVoltage>BATTERY_CAPACITY_NO_STARTUP)&&(BatteryVoltage<=BATTERY_CAPACITY_LEVEL0))
-SysTimer.c:			else if((BatteryVoltage>BATTERY_CAPACITY_MIN)&&(BatteryVoltage<=BATTERY_CAPACITY_NO_STARTUP))
-SysTimer.c:			else if((BatteryVoltage>BATTERY_CAPACITY_NO_STARTUP)&&(BatteryVoltage<=BATTERY_CAPACITY_LEVEL0))
+---- P3M1 Matches (5 in 4 files) ----
+CPU.c:226:	//P3M1=0x20;
+CPU.c:234:	P3M1=0x00;//|0x30;//p3.4 and P3.5 set push pull mode ryan@20210222
+HS_DVRProtocol.c:198:						P3M1=0x00|0x30;//p3.4 and P3.5 set push pull mode ryan@20210223
+Reg.h (include):255:sfr P3M1  = 0xB2;
+SysTimer.c:445:					P3M1=0x00;//p3.4 and P3.5 set output ryan@20210226

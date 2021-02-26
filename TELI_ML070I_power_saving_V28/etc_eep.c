@@ -86,4 +86,17 @@ void ClearBasicEE(void)
 	WriteEEP(EEP_LowBattery_Flag, OFF);	
 	
 	WriteEEP(EEP_PowerOffToOnflag,ON);
+
+	WriteEEP(EEP_Encorder1,1);
+	WriteEEP(EEP_Decimal1,0);
+
+	WriteEEP(EEP_Encorder2,1);
+	WriteEEP(EEP_Decimal2,0);
+
+	WriteEEP(EEP_Encorder3,1);
+	WriteEEP(EEP_Decimal3,0);
+
+	WriteEEP(EEP_Encorder4,1);
+	WriteEEP(EEP_Decimal4,0);
+		
 }

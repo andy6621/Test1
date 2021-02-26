@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MAIN                                                              02/23/2021 11:35:21 PAGE 1   
+C51 COMPILER V9.60.0.0   MAIN                                                              02/26/2021 09:41:56 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
@@ -62,7 +62,7 @@ line level    source
               WORD BTH_Temp=250;
               #endif
   54          #if (_DEBUG_MESSAGE_BatteryVoltage==ON)
-C51 COMPILER V9.60.0.0   MAIN                                                              02/23/2021 11:35:21 PAGE 2   
+C51 COMPILER V9.60.0.0   MAIN                                                              02/26/2021 09:41:56 PAGE 2   
 
               WORD Battery_Voltage_Temp  =835;
               #endif
@@ -126,7 +126,7 @@ line level    source
  114          {
  115   1              // Clear the magic mark
  116   1              unsigned char mark = 0x00;
-C51 COMPILER V9.60.0.0   MAIN                                                              02/23/2021 11:35:21 PAGE 3   
+C51 COMPILER V9.60.0.0   MAIN                                                              02/26/2021 09:41:56 PAGE 3   
 
  117   1              isp_init();
  118   1              isp_write(&mark, 0xEF, 0xFF, 1);
@@ -190,7 +190,7 @@ line level    source
  176   2          break;
  177   2      
  178   2        case MCU_PROTOCOL_CMD_REGULAR_DATA:     //Regular data
-C51 COMPILER V9.60.0.0   MAIN                                                              02/23/2021 11:35:21 PAGE 4   
+C51 COMPILER V9.60.0.0   MAIN                                                              02/26/2021 09:41:56 PAGE 4   
 
  179   2      
  180   2        //val=(((GET_BATTERY_CAPACITY()*32)/10000)*100)+(((GET_BATTERY_CAPACITY()*32)%10000)/100);
@@ -254,7 +254,7 @@ line level    source
  236   2          buf[5]=((EncorderLenfloaat/10)<<4)|(EncorderLenfloaat%10);
  237   2          #else
                   buf[5]=(EncorderLenfloaat<<4);
-C51 COMPILER V9.60.0.0   MAIN                                                              02/23/2021 11:35:21 PAGE 5   
+C51 COMPILER V9.60.0.0   MAIN                                                              02/26/2021 09:41:56 PAGE 5   
 
                   #endif
  240   2          buf[6]=EncorderCountPN;
@@ -318,7 +318,7 @@ line level    source
  296          
  297          
  298          void InitialTimerEvent(void)
-C51 COMPILER V9.60.0.0   MAIN                                                              02/23/2021 11:35:21 PAGE 6   
+C51 COMPILER V9.60.0.0   MAIN                                                              02/26/2021 09:41:56 PAGE 6   
 
  299          {
  300   1        MCUTimerInitialTimerEvent();  //clear all of timer event  
@@ -382,126 +382,140 @@ line level    source
  358   1         PowerFlag = ReadEEP(EEP_Powerflag);
  359   1         CameraVolt= ReadEEP(EEP_CameraVolt);
  360   1         PWR_START_flag= ReadEEP(EEP_DC12_PWR_START);
-C51 COMPILER V9.60.0.0   MAIN                                                              02/23/2021 11:35:21 PAGE 7   
+C51 COMPILER V9.60.0.0   MAIN                                                              02/26/2021 09:41:56 PAGE 7   
 
  361   1        PowerOffToOnFlag= ReadEEP(EEP_PowerOffToOnflag);
  362   1      
- 363   1        if(ReadEEP(EEP_LowBattery_Flag))
- 364   1          SET_BATTERY_CAPACITY_LOW_FLAG();
+ 363   1        Encorder1= ((ReadEEP(EEP_Encorder1)>>4)*10)+(0x0f&ReadEEP(EEP_Encorder1));
+ 364   1        Decimal1= ((ReadEEP(EEP_Decimal1)>>4)*10)+(0x0f&ReadEEP(EEP_Decimal1));
  365   1      
- 366   1        if(PWR_START_flag==ON)
- 367   1        {
- 368   2          if(PowerFlag==OFF)
- 369   2          {
- 370   3          WriteEEP(EEP_Powerflag,ON);
- 371   3          PowerFlag=ON;
- 372   3          }
- 373   2          
- 374   2          if(PowerOffToOnFlag==ON)
- 375   2            {
- 376   3            WriteEEP(EEP_PowerOffToOnflag,OFF);
- 377   3            PowerOffToOnFlag=OFF;
- 378   3            }
- 379   2      
- 380   2        } 
- 381   1        else //PWR_START_flag==OFF
- 382   1          {
- 383   2            
- 384   2            if(PowerOffToOnFlag==ON)
- 385   2            {
- 386   3            WriteEEP(EEP_Powerflag,ON);
- 387   3            PowerFlag=ON;
- 388   3      
- 389   3            
- 390   3            WriteEEP(EEP_PowerOffToOnflag,OFF);
- 391   3            PowerOffToOnFlag=OFF;
- 392   3            }
- 393   2            else if(PowerFlag==ON)
- 394   2              {
- 395   3              WriteEEP(EEP_Powerflag,OFF);
- 396   3              PowerFlag=OFF;        
- 397   3              }
- 398   2          }
- 399   1      
- 400   1      }
- 401          
- 402          WORD GetADCValue(BYTE sel)
- 403          {
- 404   1          
- 405   1      ADCTL=0x80|0x08|sel;  //start adc sampling
- 406   1      
- 407   1      while(ADCTL&0x08);  // printf("ADC is busying\r\n");  //wating for adc
- 408   1      
- 409   1      return (WORD)(((ADCVL&0x03) |(ADCV<<2))&0x03ff);
- 410   1      
- 411   1      }
- 412          
- 413          WORD GetBatteryBTH(void)
- 414          {
- 415   1      WORD max=0;
- 416   1      max=GetADCValue(P16_BTH);
- 417   1      //max=GetADCValue(P15_BTH);
+ 366   1        Encorder2= ((ReadEEP(EEP_Encorder2)>>4)*10)+(0x0f&ReadEEP(EEP_Encorder2));
+ 367   1        Decimal2= ((ReadEEP(EEP_Decimal2)>>4)*10)+(0x0f&ReadEEP(EEP_Decimal2));
+ 368   1      
+ 369   1        Encorder3= ((ReadEEP(EEP_Encorder3)>>4)*10)+(0x0f&ReadEEP(EEP_Encorder3));
+ 370   1        Decimal3= ((ReadEEP(EEP_Decimal3)>>4)*10)+(0x0f&ReadEEP(EEP_Decimal3));
+ 371   1      
+ 372   1        Encorder4= ((ReadEEP(EEP_Encorder4)>>4)*10)+(0x0f&ReadEEP(EEP_Encorder4));
+ 373   1        Decimal4= ((ReadEEP(EEP_Decimal4)>>4)*10)+(0x0f&ReadEEP(EEP_Decimal4));
+ 374   1      
+ 375   1        if(ReadEEP(EEP_LowBattery_Flag))
+ 376   1          SET_BATTERY_CAPACITY_LOW_FLAG();
+ 377   1      
+ 378   1        if(PWR_START_flag==ON)
+ 379   1        {
+ 380   2          if(PowerFlag==OFF)
+ 381   2          {
+ 382   3          WriteEEP(EEP_Powerflag,ON);
+ 383   3          PowerFlag=ON;
+ 384   3          }
+ 385   2          
+ 386   2          if(PowerOffToOnFlag==ON)
+ 387   2            {
+ 388   3            WriteEEP(EEP_PowerOffToOnflag,OFF);
+ 389   3            PowerOffToOnFlag=OFF;
+ 390   3            }
+ 391   2      
+ 392   2        } 
+ 393   1        else //PWR_START_flag==OFF
+ 394   1          {
+ 395   2            
+ 396   2            if(PowerOffToOnFlag==ON)
+ 397   2            {
+ 398   3            WriteEEP(EEP_Powerflag,ON);
+ 399   3            PowerFlag=ON;
+ 400   3      
+ 401   3            
+ 402   3            WriteEEP(EEP_PowerOffToOnflag,OFF);
+ 403   3            PowerOffToOnFlag=OFF;
+ 404   3            }
+ 405   2            else if(PowerFlag==ON)
+ 406   2              {
+ 407   3              WriteEEP(EEP_Powerflag,OFF);
+ 408   3              PowerFlag=OFF;        
+ 409   3              }
+ 410   2          }
+ 411   1      
+ 412   1      }
+ 413          
+ 414          WORD GetADCValue(BYTE sel)
+ 415          {
+ 416   1          
+ 417   1      ADCTL=0x80|0x08|sel;  //start adc sampling
  418   1      
- 419   1      //max=850;
+ 419   1      while(ADCTL&0x08);  // printf("ADC is busying\r\n");  //wating for adc
  420   1      
- 421   1      return max;
- 422   1      }
-C51 COMPILER V9.60.0.0   MAIN                                                              02/23/2021 11:35:21 PAGE 8   
+ 421   1      return (WORD)(((ADCVL&0x03) |(ADCV<<2))&0x03ff);
+ 422   1      
+C51 COMPILER V9.60.0.0   MAIN                                                              02/26/2021 09:41:56 PAGE 8   
 
- 423          
- 424          WORD GetBatteryVoltage(void)
- 425          {
- 426   1      WORD max=0;
- 427   1      max=GetADCValue(P17_BAT);
- 428   1      
- 429   1      //max=710;  //low
- 430   1      //max=835;    //normal
- 431   1      //max=900;  //full
+ 423   1      }
+ 424          
+ 425          WORD GetBatteryBTH(void)
+ 426          {
+ 427   1      WORD max=0;
+ 428   1      max=GetADCValue(P16_BTH);
+ 429   1      //max=GetADCValue(P15_BTH);
+ 430   1      
+ 431   1      //max=850;
  432   1      
  433   1      return max;
  434   1      }
  435          
- 436          
- 437          void EncorderHandler(void)
- 438          {
- 439   1      WORD EncorderCountTemp,temp_val;
- 440   1      #if (HS_DEBUG==ON)
+ 436          WORD GetBatteryVoltage(void)
+ 437          {
+ 438   1      WORD max=0;
+ 439   1      max=GetADCValue(P17_BAT);
+ 440   1      
+ 441   1      //max=710;  //low
+ 442   1      //max=835;    //normal
+ 443   1      //max=900;  //full
+ 444   1      
+ 445   1      return max;
+ 446   1      }
+ 447          
+ 448          
+ 449          void EncorderHandler(void)
+ 450          {
+ 451   1      WORD EncorderCountTemp,temp_val;
+ 452   1      #if (HS_DEBUG==ON)
               WORD temp_EncorderCountTemp;
               #endif
- 443   1      
- 444   1      //BYTE param[4];
- 445   1      float EncorderParaTemp1,EncorderParaTemp2,EncorderParaTemp3,EncorderParaTemp4;
- 446   1      float EncorderOffset1,EncorderOffset2,EncorderOffset3/*,EncorderOffset4*/;
- 447   1        
- 448   1        if(ChangeKey)
- 449   1        { 
- 450   2          #if (HS_DEBUG==ON)
+ 455   1      
+ 456   1      //BYTE param[4];
+ 457   1      float EncorderParaTemp1,EncorderParaTemp2,EncorderParaTemp3,EncorderParaTemp4;
+ 458   1      float EncorderOffset1,EncorderOffset2,EncorderOffset3/*,EncorderOffset4*/;
+ 459   1        
+ 460   1        if(ChangeKey)
+ 461   1        { 
+ 462   2          #if (HS_DEBUG==ON)
                   Printf("\r\nEncorderCount=%d",(WORD)EncorderCount);
                   #endif
- 453   2          //Printf("\r\nEncorderLen_Offset0=%d ",(WORD)EncorderLen_Offset);
- 454   2          //Printf("\r\nEncorderCountPN0=%d ",(WORD)EncorderCountPN);
- 455   2          #if 1//ryan@20200430
- 456   2      //    EncorderParaTemp1=(Encorder1+(Decimal1))*0.01f;
- 457   2      //    EncorderParaTemp2=(Encorder2+(Decimal2))*0.01f;
- 458   2      //    EncorderParaTemp3=(Encorder3+(Decimal3))*0.01f;
- 459   2      //    EncorderParaTemp4=(Encorder4+(Decimal4))*0.01f;
- 460   2          EncorderParaTemp1=(Encorder1+(Decimal1*0.01));
- 461   2          EncorderParaTemp2=(Encorder2+(Decimal2*0.01));
- 462   2          EncorderParaTemp3=(Encorder3+(Decimal3*0.01));
- 463   2          EncorderParaTemp4=(Encorder4+(Decimal4*0.01));
- 464   2      
- 465   2          #else
+ 465   2          //Printf("\r\nEncorderLen_Offset0=%d ",(WORD)EncorderLen_Offset);
+ 466   2          //Printf("\r\nEncorderCountPN0=%d ",(WORD)EncorderCountPN);
+ 467   2          #if 1//ryan@20200430
+ 468   2      //    EncorderParaTemp1=(Encorder1+(Decimal1))*0.01f;
+ 469   2      //    EncorderParaTemp2=(Encorder2+(Decimal2))*0.01f;
+ 470   2      //    EncorderParaTemp3=(Encorder3+(Decimal3))*0.01f;
+ 471   2      //    EncorderParaTemp4=(Encorder4+(Decimal4))*0.01f;
+ 472   2          EncorderParaTemp1=(Encorder1+(Decimal1*0.01));
+ 473   2          EncorderParaTemp2=(Encorder2+(Decimal2*0.01));
+ 474   2          EncorderParaTemp3=(Encorder3+(Decimal3*0.01));
+ 475   2          EncorderParaTemp4=(Encorder4+(Decimal4*0.01));
+ 476   2      
+ 477   2          #else
                   EncorderParaTemp1=(Encorder1)*0.01f;
                   EncorderParaTemp2=(Encorder2)*0.01f;
                   EncorderParaTemp3=(Encorder3)*0.01f;
                   EncorderParaTemp4=(Encorder4)*0.01f;
                   #endif
- 471   2          //EncorderParaTemp1=(Encorder1*0.01f)+Decimal1;
- 472   2          //EncorderParaTemp2=(Encorder2*0.01f)+Decimal2;
- 473   2          //EncorderParaTemp3=(Encorder3*0.01f)+Decimal3;
- 474   2          //EncorderParaTemp4=(Encorder4*0.01f)+Decimal4;
- 475   2          
- 476   2          #if 0
+ 483   2          //EncorderParaTemp1=(Encorder1*0.01f)+Decimal1;
+ 484   2          //EncorderParaTemp2=(Encorder2*0.01f)+Decimal2;
+C51 COMPILER V9.60.0.0   MAIN                                                              02/26/2021 09:41:56 PAGE 9   
+
+ 485   2          //EncorderParaTemp3=(Encorder3*0.01f)+Decimal3;
+ 486   2          //EncorderParaTemp4=(Encorder4*0.01f)+Decimal4;
+ 487   2          
+ 488   2          #if 0
                   Printf("\r\nEncorder1=%d ",(WORD)Encorder1);
                   Printf("\r\nEncorder2=%d ",(WORD)Encorder2);
                   Printf("\r\nEncorder3=%d ",(WORD)Encorder3);
@@ -510,47 +524,45 @@ line level    source
                   Printf("\r\nEncorderParaTemp1=%d ",(WORD)(EncorderParaTemp1*100));
                   Printf("\r\nEncorderParaTemp2=%d ",(WORD)(EncorderParaTemp2*100));
                   Printf("\r\nEncorderParaTemp3=%d ",(WORD)(EncorderParaTemp3*100));
-C51 COMPILER V9.60.0.0   MAIN                                                              02/23/2021 11:35:21 PAGE 9   
-
                   Printf("\r\nEncorderParaTemp4=%d ",(WORD)(EncorderParaTemp4*100));
                   #endif
- 487   2          #if 0
+ 499   2          #if 0
                   EncorderOffset1=(30.625*EncorderParaTemp1*(240-EncorderLen_Offset))/1000;
                   EncorderOffset2=EncorderOffset1+(32.091*EncorderParaTemp2*(450-240-EncorderLen_Offset))/1000;
                   EncorderOffset3=EncorderOffset2+(33.504*EncorderParaTemp3*(780-450-EncorderLen_Offset)/1000);
                   //EncorderOffset4=EncorderOffset3+(33.504*((EncorderParaTemp3+EncorderParaTemp4)/2)*(780-600)/1000);
                   #else
- 493   2          
- 494   2          EncorderOffset1=(30.625*EncorderParaTemp1*240)/1000;
- 495   2          EncorderOffset2=EncorderOffset1+(32.091*EncorderParaTemp2*(450-240))/1000;
- 496   2          EncorderOffset3=EncorderOffset2+(33.504*EncorderParaTemp3*(780-450)/1000);
- 497   2          #endif
- 498   2          #if 0
+ 505   2          
+ 506   2          EncorderOffset1=(30.625*EncorderParaTemp1*240)/1000;
+ 507   2          EncorderOffset2=EncorderOffset1+(32.091*EncorderParaTemp2*(450-240))/1000;
+ 508   2          EncorderOffset3=EncorderOffset2+(33.504*EncorderParaTemp3*(780-450)/1000);
+ 509   2          #endif
+ 510   2          #if 0
                   Printf("\r\nEncorderOffset1=%d ",(WORD)(EncorderOffset1*100));
                   Printf("\r\nEncorderOffset2=%d ",(WORD)(EncorderOffset2*100));
                   Printf("\r\nEncorderOffset3=%d ",(WORD)(EncorderOffset3*100));
                   #endif
- 503   2          //Printf("\r\nEncorderOffset4=%d ",(WORD)(EncorderOffset4*100));
- 504   2          
- 505   2          if(EncorderCount>=0)
- 506   2            {
- 507   3            EncorderCountPN=0;
- 508   3            EncorderCountTemp=(EncorderCount/2);
- 509   3            }
- 510   2          else
- 511   2            {
- 512   3            EncorderCountPN=1;
- 513   3            EncorderCountTemp=(0-EncorderCount)/2;
- 514   3            }
- 515   2          //EncorderCountTemp+=450;
- 516   2          //EncorderCount
- 517   2          #if 0
+ 515   2          //Printf("\r\nEncorderOffset4=%d ",(WORD)(EncorderOffset4*100));
+ 516   2          
+ 517   2          if(EncorderCount>=0)
+ 518   2            {
+ 519   3            EncorderCountPN=0;
+ 520   3            EncorderCountTemp=(EncorderCount/2);
+ 521   3            }
+ 522   2          else
+ 523   2            {
+ 524   3            EncorderCountPN=1;
+ 525   3            EncorderCountTemp=(0-EncorderCount)/2;
+ 526   3            }
+ 527   2          //EncorderCountTemp+=450;
+ 528   2          //EncorderCount
+ 529   2          #if 0
                   if(EncorderCount>=0)
                     EncorderCountPN=0;
                   else
                     EncorderCountPN=1;
                   #endif
- 523   2          #if 0
+ 535   2          #if 0
                   if(EncorderCountTemp>EncorderLen_Offset)
                     {
                     EncorderCountPN=0;
@@ -562,37 +574,37 @@ line level    source
                     temp_EncorderCountTemp=EncorderLen_Offset-EncorderCountTemp;
                     }
                   #endif
- 535   2          if(EncorderCountTemp<=240&&EncorderCountTemp>=0)
- 536   2            {
- 537   3            
- 538   3            #if (HS_DEBUG==ON)
+C51 COMPILER V9.60.0.0   MAIN                                                              02/26/2021 09:41:56 PAGE 10  
+
+ 547   2          if(EncorderCountTemp<=240&&EncorderCountTemp>=0)
+ 548   2            {
+ 549   3            
+ 550   3            #if (HS_DEBUG==ON)
                     Printf("\r\nEncorderCountTemp=%d ",(WORD)EncorderCountTemp);
                     Printf("\r\nEncorderLen_Offset=%d ",(WORD)EncorderLen_Offset);
                     Printf("\r\nEncorderCountPN=%d ",(WORD)EncorderCountPN);
                     #endif
- 543   3            //if(EncorderCountPN==1)
- 544   3            #if 0
+ 555   3            //if(EncorderCountPN==1)
+ 556   3            #if 0
                       EncorderLen=(30.625*EncorderParaTemp1*(temp_EncorderCountTemp))/1000;
                     #else
-C51 COMPILER V9.60.0.0   MAIN                                                              02/23/2021 11:35:21 PAGE 10  
-
- 547   3            EncorderLen=(30.625*EncorderParaTemp1*EncorderCountTemp)/1000;
- 548   3            #endif
- 549   3              //EncorderLen=(30.625*EncorderParaTemp1*(EncorderCountTemp-EncorderLen_Offset))/1000;
- 550   3              
- 551   3            //EncorderLen=(30.625*1*EncorderCountTemp)/1000;
- 552   3            temp_val=30.625*EncorderParaTemp1*EncorderCountTemp;
- 553   3            EncorderLenint=EncorderLen+0.05f;
- 554   3            //Printf("\r\nEncorderLenTemp=%d ",(WORD)EncorderLenTemp);
- 555   3            //EncorderLenint=EncorderLen;   
- 556   3            #if (_2ND_DECIMAL==ON)//ryan@20200505
- 557   3            EncorderLenfloaat=(EncorderLen+0.05)*100;
- 558   3            EncorderLenfloaat%=100;
- 559   3            #else
+ 559   3            EncorderLen=(30.625*EncorderParaTemp1*EncorderCountTemp)/1000;
+ 560   3            #endif
+ 561   3              //EncorderLen=(30.625*EncorderParaTemp1*(EncorderCountTemp-EncorderLen_Offset))/1000;
+ 562   3              
+ 563   3            //EncorderLen=(30.625*1*EncorderCountTemp)/1000;
+ 564   3            temp_val=30.625*EncorderParaTemp1*EncorderCountTemp;
+ 565   3            EncorderLenint=EncorderLen+0.05f;
+ 566   3            //Printf("\r\nEncorderLenTemp=%d ",(WORD)EncorderLenTemp);
+ 567   3            //EncorderLenint=EncorderLen;   
+ 568   3            #if (_2ND_DECIMAL==ON)//ryan@20200505
+ 569   3            EncorderLenfloaat=(EncorderLen+0.05)*100;
+ 570   3            EncorderLenfloaat%=100;
+ 571   3            #else
                     EncorderLenfloaat=(EncorderLen+0.05)*10;
                     EncorderLenfloaat%=10;
                     #endif
- 563   3            #if 0
+ 575   3            #if 0
                     Printf("\r\nEncorderCountTemp=%d ",(WORD)EncorderCountTemp);
                     Printf("\r\nEncorderLen=%d ",(WORD)EncorderLen);
                     Printf("\r\nEncorderLenint=%d ",(WORD)EncorderLenint);      
@@ -600,18 +612,18 @@ line level    source
                     Printf("\r\nEncorderCount=%d ",(WORD)EncorderCount);
                     Printf("\r\nEncorderLenTemp=%d.%dm ",(WORD)EncorderLenint,(WORD)EncorderLenfloaat);
                     #endif
- 571   3            }
- 572   2          else if(EncorderCountTemp>240&&EncorderCountTemp<=450)
- 573   2            {
- 574   3        
- 575   3            #if 0
+ 583   3            }
+ 584   2          else if(EncorderCountTemp>240&&EncorderCountTemp<=450)
+ 585   2            {
+ 586   3        
+ 587   3            #if 0
                     EncorderLen=EncorderOffset1+(32.091*EncorderParaTemp2*(temp_EncorderCountTemp-(240-EncorderLen_Offset))
              -/1000);
                     #else
- 578   3            EncorderLen=EncorderOffset1+(32.091*EncorderParaTemp2*(EncorderCountTemp-240)/1000);
- 579   3            #endif
- 580   3            
- 581   3            #if (HS_DEBUG==ON)
+ 590   3            EncorderLen=EncorderOffset1+(32.091*EncorderParaTemp2*(EncorderCountTemp-240)/1000);
+ 591   3            #endif
+ 592   3            
+ 593   3            #if (HS_DEBUG==ON)
                     Printf("\r\ntemp_EncorderCountTemp=%d ",(WORD)(temp_EncorderCountTemp-(240-EncorderLen_Offset)));
                     Printf("\r\nEncorderLen_Offset=%d ",(WORD)EncorderLen_Offset);
                     Printf("\r\ntemp_EncorderCountTemp=%d ",(WORD)temp_EncorderCountTemp);
@@ -619,54 +631,54 @@ line level    source
                     //EncorderLen=7.35+(32.091*1*(EncorderCountTemp-240)/1000);
                     Printf("\r\nEncorderCount=%d ",(WORD)EncorderCount);
                     #endif
- 589   3            EncorderLenint=EncorderLen+0.05f;     
- 590   3            #if (HS_DEBUG==ON)
+ 601   3            EncorderLenint=EncorderLen+0.05f;     
+ 602   3            #if (HS_DEBUG==ON)
                     Printf("\r\nEncorderLenint=%d ",(WORD)EncorderLenint);
                     #endif
- 593   3            //EncorderLenint=EncorderLen;
- 594   3            #if (_2ND_DECIMAL==ON)//ryan@20200505
- 595   3            EncorderLenfloaat=(EncorderLen+0.05)*100;
- 596   3            EncorderLenfloaat%=100;
- 597   3            #else
+ 605   3            //EncorderLenint=EncorderLen;
+ 606   3            #if (_2ND_DECIMAL==ON)//ryan@20200505
+ 607   3            EncorderLenfloaat=(EncorderLen+0.05)*100;
+C51 COMPILER V9.60.0.0   MAIN                                                              02/26/2021 09:41:56 PAGE 11  
+
+ 608   3            EncorderLenfloaat%=100;
+ 609   3            #else
                     EncorderLenfloaat=(EncorderLen+0.05)*10;
                     EncorderLenfloaat%=10;
                     #endif
- 601   3            
- 602   3            #if (HS_DEBUG==ON)
+ 613   3            
+ 614   3            #if (HS_DEBUG==ON)
                     Printf("\r\nEncorderLenTemp=%d.%dm ",(WORD)EncorderLenint,(WORD)EncorderLenfloaat);
                     #endif      
- 605   3            }
- 606   2          #if 1
- 607   2          else if(EncorderCountTemp>450&&EncorderCountTemp<=780)
-C51 COMPILER V9.60.0.0   MAIN                                                              02/23/2021 11:35:21 PAGE 11  
-
- 608   2            {
- 609   3            #if 0
+ 617   3            }
+ 618   2          #if 1
+ 619   2          else if(EncorderCountTemp>450&&EncorderCountTemp<=780)
+ 620   2            {
+ 621   3            #if 0
                     EncorderLen=EncorderOffset2+(33.504*1*(temp_EncorderCountTemp-(450-EncorderLen_Offset))/1000);
                     #else     
- 612   3            EncorderLen=EncorderOffset2+(33.504*EncorderParaTemp3*(EncorderCountTemp-450)/1000);
- 613   3            #endif
- 614   3            
- 615   3            #if (HS_DEBUG==ON)
+ 624   3            EncorderLen=EncorderOffset2+(33.504*EncorderParaTemp3*(EncorderCountTemp-450)/1000);
+ 625   3            #endif
+ 626   3            
+ 627   3            #if (HS_DEBUG==ON)
                     Printf("\r\nEncorderCount=%d ",(WORD)EncorderCount);
                     #endif
- 618   3            
- 619   3            EncorderLenint=EncorderLen+0.05f;
- 620   3            //Printf("\r\nEncorderLenTemp=%d ",(WORD)EncorderLenTemp);
- 621   3            //EncorderLenint=EncorderLen;
- 622   3            #if (_2ND_DECIMAL==ON)//ryan@20200505
- 623   3            EncorderLenfloaat=(EncorderLen+0.05)*100;
- 624   3            EncorderLenfloaat%=100;
- 625   3            #else
+ 630   3            
+ 631   3            EncorderLenint=EncorderLen+0.05f;
+ 632   3            //Printf("\r\nEncorderLenTemp=%d ",(WORD)EncorderLenTemp);
+ 633   3            //EncorderLenint=EncorderLen;
+ 634   3            #if (_2ND_DECIMAL==ON)//ryan@20200505
+ 635   3            EncorderLenfloaat=(EncorderLen+0.05)*100;
+ 636   3            EncorderLenfloaat%=100;
+ 637   3            #else
                     EncorderLenfloaat=(EncorderLen+0.05)*10;
                     EncorderLenfloaat%=10;
                     #endif
- 629   3            
- 630   3            #if (HS_DEBUG==ON)
+ 641   3            
+ 642   3            #if (HS_DEBUG==ON)
                     Printf("\r\nEncorderLenTemp=%d.%dm ",(WORD)EncorderLenint,(WORD)EncorderLenfloaat);
                     #endif
- 633   3            }
- 634   2          #else
+ 645   3            }
+ 646   2          #else
                   else if(EncorderCountTemp>450&&EncorderCountTemp<=600)
                     {
                     EncorderLen=14.089+(33.504*EncorderParaTemp3*(EncorderCountTemp-450)/1000);
@@ -690,40 +702,40 @@ line level    source
                     //Printf("\r\nEncorderLenTemp=%d ",(WORD)EncorderLenTemp);
                     //EncorderLenint=EncorderLen;
                     EncorderLenfloaat=(EncorderLen+0.05)*10;
+C51 COMPILER V9.60.0.0   MAIN                                                              02/26/2021 09:41:56 PAGE 12  
+
                     EncorderLenfloaat%=10;
                     Printf("\r\nEncorderLenTemp=%d.%dm ",(WORD)EncorderLenint,(WORD)EncorderLenfloaat);
                     }
                   #endif
- 662   2          else if(EncorderCountTemp>780)
- 663   2            {
- 664   3            #if 0
+ 674   2          else if(EncorderCountTemp>780)
+ 675   2            {
+ 676   3            #if 0
                     EncorderLen=EncorderOffset3+(34.896*1*(EncorderCountTemp-(780-EncorderLen_Offset))/1000);
                     #else
- 667   3            EncorderLen=EncorderOffset3+(34.896*EncorderParaTemp4*(EncorderCountTemp-780)/1000);
- 668   3            #endif
- 669   3      
-C51 COMPILER V9.60.0.0   MAIN                                                              02/23/2021 11:35:21 PAGE 12  
-
- 670   3            #if (HS_DEBUG==ON)  
+ 679   3            EncorderLen=EncorderOffset3+(34.896*EncorderParaTemp4*(EncorderCountTemp-780)/1000);
+ 680   3            #endif
+ 681   3      
+ 682   3            #if (HS_DEBUG==ON)  
                     Printf("\r\nEncorderCount=%d ",(WORD)EncorderCount);
               
                     Printf("\r\nEncorderLen=%d ",(WORD)EncorderLen);
                     #endif
- 675   3            EncorderLenint=EncorderLen+0.05f;
- 676   3            #if (HS_DEBUG==ON)
+ 687   3            EncorderLenint=EncorderLen+0.05f;
+ 688   3            #if (HS_DEBUG==ON)
                     Printf("\r\nEncorderLenint=%d ",(WORD)EncorderLenint);
                     #endif
- 679   3            //EncorderLenint=EncorderLen;
- 680   3            #if (_2ND_DECIMAL==ON)//ryan@20200505
- 681   3            EncorderLenfloaat=(EncorderLen+0.05)*100;
- 682   3            #if (HS_DEBUG==ON)
+ 691   3            //EncorderLenint=EncorderLen;
+ 692   3            #if (_2ND_DECIMAL==ON)//ryan@20200505
+ 693   3            EncorderLenfloaat=(EncorderLen+0.05)*100;
+ 694   3            #if (HS_DEBUG==ON)
                     Printf("\r\nEncorderLenfloaat=%d ",(WORD)EncorderLenfloaat);
                     #endif
- 685   3            EncorderLenfloaat%=100;
- 686   3            #if (HS_DEBUG==ON)    
+ 697   3            EncorderLenfloaat%=100;
+ 698   3            #if (HS_DEBUG==ON)    
                     Printf("\r\nEncorderLenTemp=%d.%dm ",(WORD)EncorderLenint,(WORD)EncorderLenfloaat);
                     #endif
- 689   3            #else
+ 701   3            #else
                     EncorderLenfloaat=(EncorderLen+0.05)*10;
                     #if (HS_DEBUG==ON)
                     Printf("\r\nEncorderLenfloaat=%d ",(WORD)EncorderLenfloaat);
@@ -733,196 +745,197 @@ line level    source
                     Printf("\r\nEncorderLenTemp=%d.%dm ",(WORD)EncorderLenint,(WORD)EncorderLenfloaat);
                     #endif
                     #endif      
- 699   3            }
- 700   2            
- 701   2          ChangeKey=0;
- 702   2          //param[0]=EncorderLenint;
- 703   2          //param[1]=EncorderLenfloaat;
- 704   2          //param[2]=EncorderCountPN;
- 705   2          //protocol_send_cmd_with_param_num(0x0a, (BYTE *)param, 3);
- 706   2          //protocol_send_cmd_with_param_num(0x80, (BYTE *)param, 3);
- 707   2           if(GET_DVR_SystemReadyNotic()==_TRUE)
- 708   2            {
- 709   3           MCU_SendCmdToDVR(MCU_PROTOCOL_CMD_REGULAR_DATA);
- 710   3            MCUTimerCancelTimerEvent( _SYSTEM_TIMER_EVENT_REPLAY_REGULAR_DATA);
- 711   3            MCUTimerActiveTimerEvent(SEC(1), _SYSTEM_TIMER_EVENT_REPLAY_REGULAR_DATA);
- 712   3            }
- 713   2          #if (_DEBUG_EncorderHandler==ON)//ryan@20200505
+ 711   3            }
+ 712   2            
+ 713   2          ChangeKey=0;
+ 714   2          //param[0]=EncorderLenint;
+ 715   2          //param[1]=EncorderLenfloaat;
+ 716   2          //param[2]=EncorderCountPN;
+ 717   2          //protocol_send_cmd_with_param_num(0x0a, (BYTE *)param, 3);
+ 718   2          //protocol_send_cmd_with_param_num(0x80, (BYTE *)param, 3);
+ 719   2           if(GET_DVR_SystemReadyNotic()==_TRUE)
+ 720   2            {
+ 721   3           MCU_SendCmdToDVR(MCU_PROTOCOL_CMD_REGULAR_DATA);
+ 722   3            MCUTimerCancelTimerEvent( _SYSTEM_TIMER_EVENT_REPLAY_REGULAR_DATA);
+ 723   3            MCUTimerActiveTimerEvent(SEC(1), _SYSTEM_TIMER_EVENT_REPLAY_REGULAR_DATA);
+ 724   3            }
+ 725   2          #if (_DEBUG_EncorderHandler==ON)//ryan@20200505
                   Printf("\r\nEncorderLenint=%d ",(WORD)EncorderLenint);
                   Printf("\r\nEncorderLenfloaat=%d ",(WORD)EncorderLenfloaat);
                   #endif
- 717   2        }
- 718   1        //GetKey(0);
- 719   1      }
- 720          
- 721            //bit CCFL_status;  
- 722          void main_loop(void)
- 723          {
- 724   1      
- 725   1        Printf("\r\nStart Main Loop...");
- 726   1        //---------------------------------------------------------------
- 727   1        //                   Main Loop
- 728   1        //---------------------------------------------------------------
- 729   1        while(1) 
- 730   1        {
- 731   2      
-C51 COMPILER V9.60.0.0   MAIN                                                              02/23/2021 11:35:21 PAGE 13  
+ 729   2        }
+ 730   1        //GetKey(0);
+ 731   1      }
+C51 COMPILER V9.60.0.0   MAIN                                                              02/26/2021 09:41:56 PAGE 13  
 
- 732   2          #if (_DEBUG_MESSAGE_Monitor==ON)
+ 732          
+ 733            //bit CCFL_status;  
+ 734          void main_loop(void)
+ 735          {
+ 736   1      
+ 737   1        Printf("\r\nStart Main Loop...");
+ 738   1        //---------------------------------------------------------------
+ 739   1        //                   Main Loop
+ 740   1        //---------------------------------------------------------------
+ 741   1        while(1) 
+ 742   1        {
+ 743   2      
+ 744   2          #if (_DEBUG_MESSAGE_Monitor==ON)
                   while( RS_ready() ) 
                     Monitor();        // for new monitor functions    
                   #endif      
- 736   2      
- 737   2          DvrReceivePaser();  
- 738   2          SysTimerHandler();      
- 739   2        //  SysJudgeHandler();  
- 740   2          SysPowerHandler();  
- 741   2          Scankey();
- 742   2          EncorderHandler();
- 743   2      
- 744   2        
- 745   2      
- 746   2            if(PowerFlag==OFF)   //// POWEROFF
- 747   2            break;
- 748   2        
- 749   2        }
- 750   1      
- 751   1      }
- 752          
- 753          void main(void)
- 754          {
- 755   1      
- 756   1      InitCPU();
- 757   1      
- 758   1      SysPowerInitial();
- 759   1      
- 760   1      Printf("\r\nStart Boot...");
- 761   1      
- 762   1      main_init();
- 763   1      
- 764   1      //set panel 
- 765   1      //select UP
- 766   1      SET_P_IO1();
- 767   1      //Select Left
- 768   1      SET_P_IO2();
+ 748   2      
+ 749   2          DvrReceivePaser();  
+ 750   2          SysTimerHandler();      
+ 751   2        //  SysJudgeHandler();  
+ 752   2          SysPowerHandler();  
+ 753   2          Scankey();
+ 754   2          EncorderHandler();
+ 755   2      
+ 756   2        
+ 757   2      
+ 758   2            if(PowerFlag==OFF)   //// POWEROFF
+ 759   2            break;
+ 760   2        
+ 761   2        }
+ 762   1      
+ 763   1      }
+ 764          
+ 765          void main(void)
+ 766          {
+ 767   1      
+ 768   1      InitCPU();
  769   1      
- 770   1      //variable initialize
- 771   1      InitVars();
- 772   1      
- 773   1      //load eeprom data
- 774   1      LoadEEPROM();
+ 770   1      SysPowerInitial();
+ 771   1      
+ 772   1      Printf("\r\nStart Boot...");
+ 773   1      
+ 774   1      main_init();
  775   1      
- 776   1      //event initialize
- 777   1      InitialTimerEvent();
- 778   1      
- 779   1      SetAD5110Step(CameraVolt);
- 780   1       Printf("\r\n(CameraVolt=%d)",(WORD)CameraVolt);
+ 776   1      //set panel 
+ 777   1      //select UP
+ 778   1      SET_P_IO1();
+ 779   1      //Select Left
+ 780   1      SET_P_IO2();
  781   1      
- 782   1      //if(PWR_START_flag==ON)
- 783   1      //  PowerFlag=ON;
+ 782   1      //variable initialize
+ 783   1      InitVars();
  784   1      
- 785   1      if((GET_BATTERY_CAPACITY_LOW_FLAG()==_TRUE)&&(Check_ADAP_IN()==_FALSE))
- 786   1        PowerFlag=OFF;
+ 785   1      //load eeprom data
+ 786   1      LoadEEPROM();
  787   1      
- 788   1        if(PowerFlag==ON)
- 789   1        SET_TARGET_POWER_STATUS(_POWER_STATUS_NORMAL);
- 790   1      else
- 791   1      {
- 792   2        //UserInterfacePowerSwitch(_POWER_ACTION_AC_ON_TO_OFF);
- 793   2        SET_POWER_STATUS(_POWER_STATUS_NORMAL); 
-C51 COMPILER V9.60.0.0   MAIN                                                              02/23/2021 11:35:21 PAGE 14  
+ 788   1      //event initialize
+ 789   1      InitialTimerEvent();
+ 790   1      
+ 791   1      SetAD5110Step(CameraVolt);
+ 792   1       Printf("\r\n(CameraVolt=%d)",(WORD)CameraVolt);
+ 793   1      
+C51 COMPILER V9.60.0.0   MAIN                                                              02/26/2021 09:41:56 PAGE 14  
 
- 794   2        SET_TARGET_POWER_STATUS(_POWER_STATUS_OFF);
- 795   2        
- 796   2      }
- 797   1        RepeatKey=OFF;  
- 798   1      //   SysJudgeStateChangeEvent(_MODE_STATUS_POWER_OFF);    
+ 794   1      //if(PWR_START_flag==ON)
+ 795   1      //  PowerFlag=ON;
+ 796   1      
+ 797   1      if((GET_BATTERY_CAPACITY_LOW_FLAG()==_TRUE)&&(Check_ADAP_IN()==_FALSE))
+ 798   1        PowerFlag=OFF;
  799   1      
- 800   1        while(1) {
- 801   2          if(PowerFlag==ON)
- 802   2          main_loop();    //exit when power off
- 803   2          
- 804   2          WaitPowerOn();
- 805   2        }
- 806   1      }
- 807          
- 808          void WaitPowerOn(void)
- 809          {
- 810   1      
- 811   1        Printf("\r\n(Going to power off...)");
- 812   1        SET_TARGET_POWER_STATUS(_POWER_STATUS_OFF);
- 813   1      
- 814   1        if(GET_DVR_EntrySleepMode()==TRUE)
- 815   1          CLR_DVR_EntrySleepMode();
- 816   1      
- 817   1        CLR_DVR_SystemReadyNotic(); 
- 818   1        MCUTimerCancelTimerEvent( _SYSTEM_TIMER_EVENT_JUDGE_WDT_ECHO);    
- 819   1        CLR_DVR_Shutdown();
- 820   1        MCUTimerCancelTimerEvent( _USER_TIMER_EVENT_OSD_DVR_SHUTDOWN);
- 821   1      
- 822   1        //CLR_BATTERY_CAPACITY_HIGH_FLAG();
- 823   1        Power_down_mode=_DontgoingToPD;
- 824   1      
- 825   1        while(1) 
- 826   1        {
- 827   2      
- 828   2            
- 829   2              #if (_DEBUG_MESSAGE_Monitor==ON)
+ 800   1        if(PowerFlag==ON)
+ 801   1        SET_TARGET_POWER_STATUS(_POWER_STATUS_NORMAL);
+ 802   1      else
+ 803   1      {
+ 804   2        //UserInterfacePowerSwitch(_POWER_ACTION_AC_ON_TO_OFF);
+ 805   2        SET_POWER_STATUS(_POWER_STATUS_NORMAL); 
+ 806   2        SET_TARGET_POWER_STATUS(_POWER_STATUS_OFF);
+ 807   2        
+ 808   2      }
+ 809   1        RepeatKey=OFF;  
+ 810   1      //   SysJudgeStateChangeEvent(_MODE_STATUS_POWER_OFF);    
+ 811   1      
+ 812   1        while(1) {
+ 813   2          if(PowerFlag==ON)
+ 814   2          main_loop();    //exit when power off
+ 815   2          
+ 816   2          WaitPowerOn();
+ 817   2        }
+ 818   1      }
+ 819          
+ 820          void WaitPowerOn(void)
+ 821          {
+ 822   1      
+ 823   1        Printf("\r\n(Going to power off...)");
+ 824   1        SET_TARGET_POWER_STATUS(_POWER_STATUS_OFF);
+ 825   1      
+ 826   1        if(GET_DVR_EntrySleepMode()==TRUE)
+ 827   1          CLR_DVR_EntrySleepMode();
+ 828   1      
+ 829   1        CLR_DVR_SystemReadyNotic(); 
+ 830   1        MCUTimerCancelTimerEvent( _SYSTEM_TIMER_EVENT_JUDGE_WDT_ECHO);    
+ 831   1        CLR_DVR_Shutdown();
+ 832   1        MCUTimerCancelTimerEvent( _USER_TIMER_EVENT_OSD_DVR_SHUTDOWN);
+ 833   1      
+ 834   1        //CLR_BATTERY_CAPACITY_HIGH_FLAG();
+ 835   1        Power_down_mode=_DontgoingToPD;
+ 836   1        P3M1=0x00;//p3.4 and P3.5 set output ryan@20210226
+ 837   1      
+ 838   1        while(1) 
+ 839   1        {
+ 840   2      
+ 841   2            
+ 842   2              #if (_DEBUG_MESSAGE_Monitor==ON)
                       while( RS_ready() ) 
                       Monitor();        // for new monitor functions    
                       #endif  
- 833   2      
- 834   2            SysPowerHandler();  
- 835   2            SysTimerHandler();
- 836   2            Scankey();
- 837   2            
- 838   2            if(PowerFlag==ON)   //// POWER-ON
- 839   2            break;
- 840   2      
- 841   2            #if (_POWER_DOWN_ENABLE==ON)
- 842   2      
- 843   2            if((Power_down_mode==_DontgoingToPD)&&(GET_POWER_STATUS()==_POWER_STATUS_OFF)&&(GET_AC_PLUG()/*Check_AD
-             -AP_IN()*/==_FALSE))
- 844   2            {
- 845   3            Power_down_mode=_ReadyToPD;
- 846   3            MCUTimerActiveTimerEvent(SEC(10), _SYSTEM_TIMER_POWER_DOWN_MODE);
- 847   3            } 
- 848   2            else if((Check_ADAP_IN()==_TRUE)||(((~P4>>3)& 0x01) ))
- 849   2              {
- 850   3              Power_down_mode=_DontgoingToPD;
- 851   3              MCUTimerCancelTimerEvent( _SYSTEM_TIMER_POWER_DOWN_MODE);
- 852   3              }
- 853   2            else  if(Power_down_mode==_GoingToPD)
- 854   2              SET_MCU_POWER_DOWN_MODE();        
-C51 COMPILER V9.60.0.0   MAIN                                                              02/23/2021 11:35:21 PAGE 15  
-
+ 846   2      
+ 847   2            SysPowerHandler();  
+ 848   2            SysTimerHandler();
+ 849   2            Scankey();
+ 850   2            
+ 851   2            if(PowerFlag==ON)   //// POWER-ON
+ 852   2            break;
+ 853   2      
+ 854   2            #if (_POWER_DOWN_ENABLE==ON)
  855   2      
- 856   2            #endif  
- 857   2            
- 858   2        }
- 859   1      
- 860   1      
- 861   1        WriteEEP(EEP_PowerOffToOnflag,ON);
- 862   1        EncorderCount=0;
- 863   1        EncorderLenint=0;
- 864   1        EncorderLenfloaat=0;
- 865   1        EncorderCountPN=0;
- 866   1         RS2_in=0; //clean DVR CMD.
- 867   1        RS2_out=0;//clean DVR CMD.
- 868   1        //CLR_BATTERY_CAPACITY_LOW_FLAG();  
- 869   1              CLR_BATTERY_ABNORMAL();
- 870   1        SET_BATTERY_CHARGE_STATE(_BATT_STATUS_NONE);
- 871   1        SET_TARGET_POWER_STATUS(_POWER_STATUS_NORMAL);  
- 872   1        Printf("\r\n(Start up  Power On Mode...)");
+C51 COMPILER V9.60.0.0   MAIN                                                              02/26/2021 09:41:56 PAGE 15  
+
+ 856   2            if((Power_down_mode==_DontgoingToPD)&&(GET_POWER_STATUS()==_POWER_STATUS_OFF)&&(GET_AC_PLUG()/*Check_AD
+             -AP_IN()*/==_FALSE))
+ 857   2            {
+ 858   3            Power_down_mode=_ReadyToPD;
+ 859   3            MCUTimerActiveTimerEvent(SEC(10), _SYSTEM_TIMER_POWER_DOWN_MODE);
+ 860   3            } 
+ 861   2            else if((Check_ADAP_IN()==_TRUE)||(((~P4>>3)& 0x01) ))
+ 862   2              {
+ 863   3              Power_down_mode=_DontgoingToPD;
+ 864   3              MCUTimerCancelTimerEvent( _SYSTEM_TIMER_POWER_DOWN_MODE);
+ 865   3              }
+ 866   2            else  if(Power_down_mode==_GoingToPD)
+ 867   2              SET_MCU_POWER_DOWN_MODE();        
+ 868   2      
+ 869   2            #endif  
+ 870   2            
+ 871   2        }
+ 872   1      
  873   1      
- 874   1        ISPCR = 0x20;/// reboot to AP.
- 875   1      
- 876   1      }
- 877          
+ 874   1        WriteEEP(EEP_PowerOffToOnflag,ON);
+ 875   1        EncorderCount=0;
+ 876   1        EncorderLenint=0;
+ 877   1        EncorderLenfloaat=0;
+ 878   1        EncorderCountPN=0;
+ 879   1         RS2_in=0; //clean DVR CMD.
+ 880   1        RS2_out=0;//clean DVR CMD.
+ 881   1        //CLR_BATTERY_CAPACITY_LOW_FLAG();  
+ 882   1              CLR_BATTERY_ABNORMAL();
+ 883   1        SET_BATTERY_CHARGE_STATE(_BATT_STATUS_NONE);
+ 884   1        SET_TARGET_POWER_STATUS(_POWER_STATUS_NORMAL);  
+ 885   1        Printf("\r\n(Start up  Power On Mode...)");
+ 886   1      
+ 887   1        ISPCR = 0x20;/// reboot to AP.
+ 888   1      
+ 889   1      }
+ 890          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   3164    ----
+   CODE SIZE        =   3574    ----
    CONSTANT SIZE    =    119    ----
    XDATA SIZE       =    112      94
    PDATA SIZE       =   ----    ----

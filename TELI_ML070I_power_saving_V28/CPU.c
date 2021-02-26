@@ -154,8 +154,12 @@ void InitCPU(void)
 						// int 0,  edge triggered						
 						// int 1,  edge triggered						
 						// TF1 TR1 TF0 TR0	EI1 IT1 EI0 IT0				
-	TH0 = TL0 = (64); 	// 64=4608 Hz at 11.0592MHz
+#if (_1KHZ_PWM==ON)	
+TH0 = TL0 = (255-6); 	// PWM 1Khz frequency
 
+#else
+	TH0 = TL0 = (64); 	// 64=4608 Hz at 11.0592MHz
+#endif
 	PCON = 0x80;		// 0000 0000 SMOD(double baud rate bit) = 1		
 	IP	 = 0x02;		// 0000 0000 interrupt priority					
 						// -  - PT2 PS PT1 PX1 PT0 PX0	 		         
@@ -171,9 +175,23 @@ void InitCPU(void)
 	#endif // SERIAL
 
 	//------------ Timer 2 for Remocon --------------------------------
+	#if (_1KHZ_PWM==ON)
+	TL2=0x64-20;//0xE3;
+	TH2=0xFF;
+	RCAP2L=0x64-20;//0xE3;
+	RCAP2H=0xFF;
+
 	T2CON  = 0x00;				// Timer2 Clear
 	TR2	   = 0;
 	ET2    = 1;
+
+	T2CON = 0x04;				// Timer2 run
+	AUXR |=0x80;	//Timer1 for UART2	
+	#else
+	T2CON  = 0x00;				// Timer2 Clear
+	TR2	   = 0;
+	ET2    = 1;
+	#endif
 	//-----------------------------------------------------------------
 
 	//Uart2
@@ -360,6 +378,9 @@ default:
 //INTERRUPT(1, timer0_int)
 void timer0_int(void) interrupt 1 using 1			// interrupt number1, bank register 2
 {
+
+ #if  (_1KHZ_PWM==ON)
+ #else
 BYTE TempKey;
 
 	tm001++;
@@ -560,7 +581,7 @@ else
 #endif	
 	///////////////////////////////////////////	
 	}
-		
+	#endif	
 }
 
 //=============================================================================//
@@ -1019,10 +1040,167 @@ void RS2_tx(BYTE tx_buf)
 //INTERRUPT(5, timer2_int)
 void timer2_int(void) interrupt 5 using 1			// using register block 3
 {
+	#if  (_1KHZ_PWM==ON)
+	BYTE TempKey;
+
+	TF2 = 0;					// clear overflow
+        ET2=0;
+#if 1
+		tm001++;
+	
+			//Timer Counter 
+		  tic02++;
+	
+	//	if(tic02>=(10*22))	 
+			if(tic02>=(10))	 
+		{
+		g_usTimerCounter += 1;	   ///per 103us  interrupt
+		tic02=0;
+		g_bNotifyTimer0Int=_TRUE;
+		}	
+#endif
+	//tm01++;
+
+#if 1
+
+			if(Time5ms)
+				Time5ms--;
+
+			if(Time5ms==0)
+			{
+				//TempKey=(( (P2&0xC0) >> 6) & 0x03);
+				TempKey=(( (P3&0x0C) >> 2) & 0x03); //ENA&ENB, P3.2, P3.3 				
+				
+				if(updn_reg[3] !=TempKey )// (( (P2&0x60) >> 5) & 0x03))	//Abel for HS SW key ......951102										
+				{																						   
+					updn_reg[0] = updn_reg[1];																
+					updn_reg[1] = updn_reg[2];																
+					updn_reg[2] = updn_reg[3];																
+					updn_reg[3] =TempKey;// ( (P2&0x60) >> 5) & 0x03; 
+					ChangeKey=1;		
+				//else			//william-v1.42-961130
+				//ChangeKey=0;	//william-v1.42-961130
+				Time5ms=(48);
+		
+				if((updn_reg[0] == 0) && (updn_reg[1] == 1) && (updn_reg[2] == 3)&& (updn_reg[3] == 2))  //UP Key	  
+					   EncorderCount++; 		   
+				if((updn_reg[0] == 1) && (updn_reg[1] == 3) && (updn_reg[2] == 2)&& (updn_reg[3] == 0))  //UP Key	  
+					   EncorderCount++; 		 
+				 if((updn_reg[0] == 3) && (updn_reg[1] == 2) && (updn_reg[2] == 0)&& (updn_reg[3] == 1))	//UP Key	
+					  EncorderCount++;
+				 if((updn_reg[0] == 2) && (updn_reg[1] == 0) && (updn_reg[2] == 1)&& (updn_reg[3] == 3))  //UP Key	  
+					EncorderCount++;		
+				 
+				if((updn_reg[0] == 0) && (updn_reg[1] == 2)&& (updn_reg[2] == 3)&& (updn_reg[3] == 1))	//DN Key	 
+					   EncorderCount--; 	 
+				 if((updn_reg[0] == 2) && (updn_reg[1] == 3)&& (updn_reg[2] == 1)&& (updn_reg[3] == 0))  //DN Key	  
+					   EncorderCount--; 		
+				if((updn_reg[0] == 3) && (updn_reg[1] == 1)&& (updn_reg[2] == 0)&& (updn_reg[3] == 2))	//DN Key	
+					   EncorderCount--;
+				if((updn_reg[0] == 1) && (updn_reg[1] == 0)&& (updn_reg[2] == 2)&& (updn_reg[3] == 3))	//DN Key	
+					   EncorderCount--; 
+	
+				}
+				
+			}
+			
+#endif
+
+#if 1
+	//---------- 0.01 sec timer ------------
+		
+	#ifdef CLOCK_11M
+		if( tm001 > 48 ) {			// LJY001220 0.01sec
+	#elif defined CLOCK_22M
+//		if( tm001 > ((48*2)*22) ) {		// LJY001220 0.01sec
+		if( tm001 > ((48*2)) ) { 	// LJY001220 0.01sec
+	#endif
+	
+			stopWatch++;
+			tm001 = 0;
+			tic01++;
+		
+			if( tic01==100 ) 
+			{				// 1 sec
+				
+				tic01 = 0;
+				//second++;
+				
+			if(Key)
+				keyticSec++;
+			else
+				keyticSec=0;
+	
+			}
+			if( tic_pc!=0xffff ) 
+				tic_pc++;
+	
+	
+	if(tic_Init_time)
+		tic_Init_time--;
+	if(Power_Msg_Count)
+		Power_Msg_Count--;
+
+	///////////////////////////////////////////	
+
+#if 1
+ if( _ReadKey() )
+{		
+		if (keytic==50)
+		{
+			if((PowerFlag==OFF)||(GET_POWER_STATUS()==_POWER_STATUS_SAVING))
+			{
+			Key = ON;
+			RepeatKey=OFF;	
+			KeyReady = ON;
+			}
+		}
+		else if( keytic==800 ) {//8sec into DVR factory mode	
+
+			if(RepeatKey==ON)
+			{
+			Key = ON;
+			KeyReady = ON;			
+			DVR_FACTORY_MODE=ON;
+			RepeatKey=OFF;	
+			}
+				
+		keytic = 51;///51;
+		}
+		
+	keytic++;
+}
+else 
+	{
+		if( (keytic>=50)&&(PowerFlag==ON)&&(RepeatKey==ON)) {  //0.5sec push
+		Key = ON;
+		KeyReady = ON;
+		}
+		else
+		{
+		Key=OFF;
+		KeyReady = OFF;
+		}
+		
+		RepeatKey = ON;
+		keytic = 0;		
+	}	
+#endif
+
+	///////////////////////////////////////////	
+	}
+
+
+#endif
+
+TF2 = 0;	
+
+ET2=1;	
+	#else
 	TF2 = 0;					// clear overflow
 
 	tm01++;
-
+	#endif
 }
 
 void delay(BYTE cnt)

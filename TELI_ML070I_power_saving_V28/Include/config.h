@@ -14,7 +14,7 @@
 //-----------------------------------------------------------------------------
 #define	MCU_FW_Major			0x00	
 #define	MCU_FW_Sub0			0x00		
-#define	MCU_FW_Sub1			0x34	
+#define	MCU_FW_Sub1			0x35	
 
 //-----------------------------------------------------------------------------
 //		Compiler
@@ -29,6 +29,7 @@
 
 #define  _2ND_DECIMAL           			ON
 #define  _POWER_DOWN_ENABLE             	ON
+#define  _1KHZ_PWM			             	OFF
 
 //-----------------------------------------------------------------------------
 //		Battery Charge Configure

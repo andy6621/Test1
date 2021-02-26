@@ -244,6 +244,18 @@ if ( RS2_ready())
 						Encorder4=((protocol_data[6]>>4)*10)+(0x0f&protocol_data[6]);
 						Decimal4=((protocol_data[7]>>4)*10)+(0x0f&protocol_data[7]);
 
+						WriteEEP(EEP_Encorder1,protocol_data[0]);
+						WriteEEP(EEP_Decimal1,protocol_data[1]);
+
+						WriteEEP(EEP_Encorder2,protocol_data[2]);
+						WriteEEP(EEP_Decimal2,protocol_data[3]);
+
+						WriteEEP(EEP_Encorder3,protocol_data[4]);
+						WriteEEP(EEP_Decimal3,protocol_data[5]);
+
+						WriteEEP(EEP_Encorder4,protocol_data[6]);
+						WriteEEP(EEP_Decimal4,protocol_data[7]);
+
 						MCUTimerActiveTimerEvent(SEC(1),_USER_TIMER_EVENT_OSD_ENCODER_DEVIATION_SETTING);						
 
 						break;

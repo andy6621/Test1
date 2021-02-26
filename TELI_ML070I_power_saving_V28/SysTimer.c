@@ -441,6 +441,8 @@ switch(ucEventID)
 					CLR_DVR_SystemReadyNotic();
 					 UserInterfaceBatteryChargeMode(_BATT_STATUS_DVR_OFF);
 					MCUTimerActiveTimerEvent(SEC(3), _USER_TIMER_EVENT_OSD_DVR_REBOOT);
+
+					P3M1=0x00;//p3.4 and P3.5 set output ryan@20210226
 					}
 				else
 				{
