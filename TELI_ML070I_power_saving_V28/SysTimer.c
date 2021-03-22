@@ -1091,7 +1091,7 @@ switch(enumEventID)
 			{
 					if(GET_DVR_PowerOFFDelay()==_FALSE)
 					{
-						if((GET_BATTERY_CAPACITY_LOW_FLAG()==_FALSE)||(GET_AC_PLUG()==_TRUE))
+						if((GET_BATTERY_CAPACITY_LOW_FLAG()==_FALSE)||(Check_ADAP_IN()/*GET_AC_PLUG()*/==_TRUE))
 						{
 						PowerFlag=ON;
 						WriteEEP(EEP_Powerflag,PowerFlag);
@@ -1353,7 +1353,7 @@ case _SYSTEM_TIMER_EVENT_BATTERY_LOW_PWR_OFF:
 								//SET_AC_MODE();	// turn on AC mode
 								CLR_AC_MODE();	// turn on AC mode
 								//MCUTimerDelayXms(100);//delay 50ms		
-								CLR_BAT_SYS();// turn off battery output							
+								//CLR_BAT_SYS();// turn off battery output							
 								//SET_PWM(_CHG_CURR,Low_Current);
 
 								STAT1_temp=GET_STAT1();	
@@ -1439,7 +1439,7 @@ case _SYSTEM_TIMER_EVENT_BATTERY_LOW_PWR_OFF:
 						}
 
 					CLR_AC_MODE();	
-    					CLR_BAT_SYS();
+    					//CLR_BAT_SYS();
 		break;
                 case _SYSTEM_TIMER_EVENT_CHECK_CHARGE_STATE:
 
@@ -1665,7 +1665,7 @@ case _SYSTEM_TIMER_EVENT_BATTERY_LOW_PWR_OFF:
 				if(GET_BAT_SYS()!=ON)
 					{
 					//SET_BAT_SYS();   // turn on  battery mode
-					CLR_BAT_SYS();   // turn on  battery mode
+					//CLR_BAT_SYS();   // turn on  battery mode
 					//MCUTimerDelayXms(100);//delay 50ms					
 					CLR_AC_MODE();	// turn off AC mode
 					}
@@ -1680,7 +1680,7 @@ case _SYSTEM_TIMER_EVENT_BATTERY_LOW_PWR_OFF:
 				}
 
 					CLR_AC_MODE();	
-    					CLR_BAT_SYS();
+    					//CLR_BAT_SYS();
 			break;
 
      	case _SYSTEM_TIMER_EVENT_BATT_LOW_CHARGE:	

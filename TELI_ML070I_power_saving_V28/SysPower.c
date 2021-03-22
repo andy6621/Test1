@@ -365,8 +365,8 @@ void UserInterfacePowerSwitch(EnumPowerAction enumSwitch)
         case _POWER_ACTION_AC_ON_TO_NORMAL:
 	case _POWER_ACTION_PS_TO_NORMAL:
 	case _POWER_ACTION_OFF_TO_NORMAL:
-#if 1				
-			
+#if 1			
+	
 			SET_PCON5V();		
 			SET_PWCTRL();
 			SET_AC_MODE();
@@ -406,6 +406,8 @@ void UserInterfacePowerSwitch(EnumPowerAction enumSwitch)
 			CLR_DVR_EntrySleepMode();
 			MCU_SendCmdToDVR(MCU_PROTOCOL_CMD_SLEEP_WAKE_UP);
 			}
+
+			P3M1=0x00|0x30;//p3.4 and P3.5 set push pull mode ryan@20210223
 			break;
 
         case _POWER_ACTION_AC_ON_TO_OFF:
@@ -445,13 +447,14 @@ void UserInterfacePowerSwitch(EnumPowerAction enumSwitch)
 			CLR_PCON5V_P();
 			CLR_PWCTRL();
 			CLR_AC_MODE();
-			CLR_BAT_SYS();
+			//CLR_BAT_SYS();
 			CLR_PCON_CAM();
 			CLR_BL_PWM();
 			//CLR_PCON5V();
 			//SET_TW8836_RST();	
 			//CLR_PCON3V3_TW();
 			
+			P3M1=0x00;//p3.4 and P3.5 set output ryan@20210226
             break;
 
         default:

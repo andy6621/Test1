@@ -75,7 +75,8 @@
 //--------------------------------------------------
 #define GET_BAT_SYS()	(P2_6)	
 #define SET_BAT_SYS()	(P2_6 = 1)  	 //ON
-#define CLR_BAT_SYS()	(P2_6 = 1/*0*/)	//OFF for EP2 board
+//#define CLR_BAT_SYS()	(P2_6 = 1/*0*/)	//OFF for EP2 board
+#define CLR_BAT_SYS()	(P2_6 = 0)	//OFF for EP2 board ryan@20210311
 
 //--------------------------------------------------
 // CAM Power  Related MACRO

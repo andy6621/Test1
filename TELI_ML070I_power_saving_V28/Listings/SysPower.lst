@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   SYSPOWER                                                          02/26/2021 09:41:56 PAGE 1   
+C51 COMPILER V9.60.0.0   SYSPOWER                                                          03/22/2021 11:23:03 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE SYSPOWER
@@ -62,7 +62,7 @@ line level    source
   52          void UserInterfacePowerSwitch(EnumPowerAction enumSwitch);
   53          void UserInterfaceBatteryChargeMode(EnumBatteryStatus enumSwitch);
   54          
-C51 COMPILER V9.60.0.0   SYSPOWER                                                          02/26/2021 09:41:56 PAGE 2   
+C51 COMPILER V9.60.0.0   SYSPOWER                                                          03/22/2021 11:23:03 PAGE 2   
 
   55          extern void MCUTimerCancelTimerEvent(BYTE ucEventID);
   56          extern bit MCUTimerCheckEventValid(BYTE ucEventIndex);
@@ -126,7 +126,7 @@ line level    source
  114   3      
  115   3                      case _POWER_STATUS_NOSUPPORT_SAVING:
  116   3                          break;
-C51 COMPILER V9.60.0.0   SYSPOWER                                                          02/26/2021 09:41:56 PAGE 3   
+C51 COMPILER V9.60.0.0   SYSPOWER                                                          03/22/2021 11:23:03 PAGE 3   
 
  117   3                      case _POWER_STATUS_NORMAL:     
  118   3                          break;          
@@ -190,7 +190,7 @@ line level    source
  176          void UserInterfaceBatteryChargeMode(EnumBatteryStatus enumSwitch)
  177          {
  178   1      
-C51 COMPILER V9.60.0.0   SYSPOWER                                                          02/26/2021 09:41:56 PAGE 4   
+C51 COMPILER V9.60.0.0   SYSPOWER                                                          03/22/2021 11:23:03 PAGE 4   
 
  179   1        MCUTimerCancelTimerEvent(_SYSTEM_TIMER_EVENT_GRN_BLINK);
  180   1        MCUTimerCancelTimerEvent(_SYSTEM_TIMER_EVENT_GRN_2S_BLINK);
@@ -254,7 +254,7 @@ line level    source
  238   3              }
  239   2            else
  240   2              {
-C51 COMPILER V9.60.0.0   SYSPOWER                                                          02/26/2021 09:41:56 PAGE 5   
+C51 COMPILER V9.60.0.0   SYSPOWER                                                          03/22/2021 11:23:03 PAGE 5   
 
  241   3                if((PowerFlag==OFF)&&(STAT1_Flag==OFF)&&(STAT2_Flag==ON))
  242   3                MCUTimerActiveTimerEvent(SEC(0.1), _SYSTEM_TIMER_EVENT_GRN_OFF_RED_ON);//Update LED Status          
@@ -318,7 +318,7 @@ line level    source
  300   3                MCUTimerActiveTimerEvent(SEC(0.1), _SYSTEM_TIMER_EVENT_GRN_ON_RED_OFF);//Update LED Status
  301   3                  
  302   3              }
-C51 COMPILER V9.60.0.0   SYSPOWER                                                          02/26/2021 09:41:56 PAGE 6   
+C51 COMPILER V9.60.0.0   SYSPOWER                                                          03/22/2021 11:23:03 PAGE 6   
 
  303   2                break;          
  304   2          case  _BATT_STATUS_NO_BATT:
@@ -382,13 +382,13 @@ line level    source
  362   1        
  363   1          switch(enumSwitch)
  364   1          {
-C51 COMPILER V9.60.0.0   SYSPOWER                                                          02/26/2021 09:41:56 PAGE 7   
+C51 COMPILER V9.60.0.0   SYSPOWER                                                          03/22/2021 11:23:03 PAGE 7   
 
  365   2              case _POWER_ACTION_AC_ON_TO_NORMAL:
  366   2        case _POWER_ACTION_PS_TO_NORMAL:
  367   2        case _POWER_ACTION_OFF_TO_NORMAL:
- 368   2      #if 1       
- 369   2            
+ 368   2      #if 1     
+ 369   2        
  370   2            SET_PCON5V();   
  371   2            SET_PWCTRL();
  372   2            SET_AC_MODE();
@@ -428,115 +428,118 @@ line level    source
  406   3            CLR_DVR_EntrySleepMode();
  407   3            MCU_SendCmdToDVR(MCU_PROTOCOL_CMD_SLEEP_WAKE_UP);
  408   3            }
- 409   2            break;
- 410   2      
- 411   2              case _POWER_ACTION_AC_ON_TO_OFF:
- 412   2        case _POWER_ACTION_NORMAL_TO_OFF:
- 413   2        case _POWER_ACTION_PS_TO_OFF:
- 414   2      
- 415   2          SET_TW8836_RST(); 
- 416   2          CLR_PCON3V3_P();
- 417   2          CLR_PCON5V_P();
- 418   2          CLR_Panel_EN();
- 419   2          CLR_PCON5V();
+ 409   2      
+ 410   2            P3M1=0x00|0x30;//p3.4 and P3.5 set push pull mode ryan@20210223
+ 411   2            break;
+ 412   2      
+ 413   2              case _POWER_ACTION_AC_ON_TO_OFF:
+ 414   2        case _POWER_ACTION_NORMAL_TO_OFF:
+ 415   2        case _POWER_ACTION_PS_TO_OFF:
+ 416   2      
+ 417   2          SET_TW8836_RST(); 
+ 418   2          CLR_PCON3V3_P();
+ 419   2          CLR_PCON5V_P();
  420   2          CLR_Panel_EN();
- 421   2          CLR_PWCTRL();
- 422   2          CLR_AC_MODE();
- 423   2          CLR_BAT_SYS();
- 424   2          CLR_PCON_CAM();
- 425   2          //#if (_DEBUG_MESSAGE_Monitor==ON)
- 426   2          //#else
-C51 COMPILER V9.60.0.0   SYSPOWER                                                          02/26/2021 09:41:56 PAGE 8   
+ 421   2          CLR_PCON5V();
+ 422   2          CLR_Panel_EN();
+ 423   2          CLR_PWCTRL();
+ 424   2          CLR_AC_MODE();
+ 425   2          CLR_BAT_SYS();
+ 426   2          CLR_PCON_CAM();
+C51 COMPILER V9.60.0.0   SYSPOWER                                                          03/22/2021 11:23:03 PAGE 8   
 
- 427   2          //CLR_PCON3V3_TW(); ///關閉debug message UART1 有問題
- 428   2          //#endif
- 429   2          CLR_BL_PWM();
- 430   2      
- 431   2          #if 0// (_DEBUG_MESSAGE_Monitor==ON)
+ 427   2          //#if (_DEBUG_MESSAGE_Monitor==ON)
+ 428   2          //#else
+ 429   2          //CLR_PCON3V3_TW(); ///關閉debug message UART1 有問題
+ 430   2          //#endif
+ 431   2          CLR_BL_PWM();
+ 432   2      
+ 433   2          #if 0// (_DEBUG_MESSAGE_Monitor==ON)
                   #else
- 433   2          CLR_PCON3V3_TW(); ///關閉debug message UART1 有問題
- 434   2          #endif
- 435   2      
- 436   2          SET_DVR_PowerOFFDelay();
- 437   2          MCUTimerActiveTimerEvent( SEC(3),_SYSTEM_TIMER_EVENT_POWER_OFF_ON_DELAY);
- 438   2                  break;
- 439   2      
- 440   2              case _POWER_ACTION_NORMAL_TO_PS:
+ 435   2          CLR_PCON3V3_TW(); ///關閉debug message UART1 有問題
+ 436   2          #endif
+ 437   2      
+ 438   2          SET_DVR_PowerOFFDelay();
+ 439   2          MCUTimerActiveTimerEvent( SEC(3),_SYSTEM_TIMER_EVENT_POWER_OFF_ON_DELAY);
+ 440   2                  break;
  441   2      
- 442   2            //CLR_PCON3V3_P();
- 443   2            //CLR_PCON5V_P();
- 444   2            CLR_Panel_EN();
- 445   2            CLR_PCON5V_P();
- 446   2            CLR_PWCTRL();
- 447   2            CLR_AC_MODE();
- 448   2            CLR_BAT_SYS();
- 449   2            CLR_PCON_CAM();
- 450   2            CLR_BL_PWM();
- 451   2            //CLR_PCON5V();
- 452   2            //SET_TW8836_RST(); 
- 453   2            //CLR_PCON3V3_TW();
- 454   2            
- 455   2                  break;
- 456   2      
- 457   2              default:
- 458   2      
- 459   2                  break;
- 460   2          }
- 461   1      
- 462   1          
- 463   1      SET_BATTERY_CHARGE_STATE(_BATT_STATUS_NONE);//reset battery state.
+ 442   2              case _POWER_ACTION_NORMAL_TO_PS:
+ 443   2      
+ 444   2            //CLR_PCON3V3_P();
+ 445   2            //CLR_PCON5V_P();
+ 446   2            CLR_Panel_EN();
+ 447   2            CLR_PCON5V_P();
+ 448   2            CLR_PWCTRL();
+ 449   2            CLR_AC_MODE();
+ 450   2            //CLR_BAT_SYS();
+ 451   2            CLR_PCON_CAM();
+ 452   2            CLR_BL_PWM();
+ 453   2            //CLR_PCON5V();
+ 454   2            //SET_TW8836_RST(); 
+ 455   2            //CLR_PCON3V3_TW();
+ 456   2            
+ 457   2            P3M1=0x00;//p3.4 and P3.5 set output ryan@20210226
+ 458   2                  break;
+ 459   2      
+ 460   2              default:
+ 461   2      
+ 462   2                  break;
+ 463   2          }
  464   1      
- 465   1      }
- 466          
- 467          //--------------------------------------------------
- 468          // Description  : Deal With Power Manage According To Input Pamater
- 469          // Input Value  : ucSwitch    --> Power action description.
- 470          // Output Value : None
- 471          //--------------------------------------------------
- 472          void SysPowerSwitch(EnumPowerAction enumSwitch)
- 473          {
- 474   1      
- 475   1      
- 476   1          switch(enumSwitch)
- 477   1          {
- 478   2              case _POWER_ACTION_NORMAL_TO_PS:
- 479   2            UserInterfacePowerSwitch(enumSwitch); 
- 480   2                  break;
- 481   2      
- 482   2              case _POWER_ACTION_NORMAL_TO_OFF:
- 483   2              case _POWER_ACTION_AC_ON_TO_OFF:
- 484   2        case _POWER_ACTION_DVR_POWER_OFF: 
- 485   2            case _POWER_ACTION_PS_TO_OFF:
- 486   2          UserInterfacePowerSwitch(enumSwitch); 
- 487   2        break;
- 488   2                  
-C51 COMPILER V9.60.0.0   SYSPOWER                                                          02/26/2021 09:41:56 PAGE 9   
+ 465   1          
+ 466   1      SET_BATTERY_CHARGE_STATE(_BATT_STATUS_NONE);//reset battery state.
+ 467   1      
+ 468   1      }
+ 469          
+ 470          //--------------------------------------------------
+ 471          // Description  : Deal With Power Manage According To Input Pamater
+ 472          // Input Value  : ucSwitch    --> Power action description.
+ 473          // Output Value : None
+ 474          //--------------------------------------------------
+ 475          void SysPowerSwitch(EnumPowerAction enumSwitch)
+ 476          {
+ 477   1      
+ 478   1      
+ 479   1          switch(enumSwitch)
+ 480   1          {
+ 481   2              case _POWER_ACTION_NORMAL_TO_PS:
+ 482   2            UserInterfacePowerSwitch(enumSwitch); 
+ 483   2                  break;
+ 484   2      
+ 485   2              case _POWER_ACTION_NORMAL_TO_OFF:
+ 486   2              case _POWER_ACTION_AC_ON_TO_OFF:
+ 487   2        case _POWER_ACTION_DVR_POWER_OFF: 
+ 488   2            case _POWER_ACTION_PS_TO_OFF:
+C51 COMPILER V9.60.0.0   SYSPOWER                                                          03/22/2021 11:23:03 PAGE 9   
 
- 489   2      //       case _POWER_ACTION_PS_TO_OFF:
- 490   2      //            break;
- 491   2      
- 492   2              case _POWER_ACTION_AC_ON_TO_NORMAL:
- 493   2              case _POWER_ACTION_OFF_TO_NORMAL:
- 494   2              case _POWER_ACTION_PS_TO_NORMAL:    
- 495   2               case _POWER_ACTION_PS_TO_BATT: 
- 496   2        case _POWER_ACTION_DVR_POWER_ON:
- 497   2        case  _POWER_ACTION_PANEL_POWER_ON:
- 498   2          // User Power Process
- 499   2                      UserInterfacePowerSwitch(enumSwitch);        
- 500   2                break;
- 501   2            
- 502   2              default:
- 503   2                  break;
- 504   2          }
- 505   1        
- 506   1      }
- 507          
- 508          
- 509          
+ 489   2          UserInterfacePowerSwitch(enumSwitch); 
+ 490   2        break;
+ 491   2                  
+ 492   2      //       case _POWER_ACTION_PS_TO_OFF:
+ 493   2      //            break;
+ 494   2      
+ 495   2              case _POWER_ACTION_AC_ON_TO_NORMAL:
+ 496   2              case _POWER_ACTION_OFF_TO_NORMAL:
+ 497   2              case _POWER_ACTION_PS_TO_NORMAL:    
+ 498   2               case _POWER_ACTION_PS_TO_BATT: 
+ 499   2        case _POWER_ACTION_DVR_POWER_ON:
+ 500   2        case  _POWER_ACTION_PANEL_POWER_ON:
+ 501   2          // User Power Process
+ 502   2                      UserInterfacePowerSwitch(enumSwitch);        
+ 503   2                break;
+ 504   2            
+ 505   2              default:
+ 506   2                  break;
+ 507   2          }
+ 508   1        
+ 509   1      }
+ 510          
+ 511          
+ 512          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   1103    ----
+   CODE SIZE        =   1107    ----
    CONSTANT SIZE    =     45    ----
    XDATA SIZE       =   ----       3
    PDATA SIZE       =   ----    ----

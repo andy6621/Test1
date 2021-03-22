@@ -229,6 +229,7 @@ TH0 = TL0 = (255-6); 	// PWM 1Khz frequency
 	//P1M0|=0x04|0x40|0x20; ////set input p1.6 and P1.5 for adc function
 	P1M0|=(0x04|0x80|0x40);///adc p1.7,P1.6
 		
+	P2M1=0x40;		//|P2_6 set push pull mode ryan@20210312
 
 	P3M0=0x0C;
 	P3M1=0x00;//|0x30;//p3.4 and P3.5 set push pull mode ryan@20210222
