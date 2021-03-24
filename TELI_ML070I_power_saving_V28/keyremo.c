@@ -27,6 +27,8 @@ extern BYTE PowerFlag;
 extern BYTE  updn_reg[4];
 extern short EncorderCount;
 extern bit ChangeKey;
+extern BYTE bytHoldOn3SPowerOff;
+extern BYTE bytHoldOn3SPowerOffMode;
 
 void Scankey(void)
 {
@@ -39,6 +41,13 @@ void Scankey(void)
 	DVR_FACTORY_MODE=OFF;//reset value
 	MCUTimerActiveTimerEvent(SEC(0.5), _USER_TIMER_EVENT_OSD_DVR_FACTORY_MODE);
 	}
+	else if((bytHoldOn3SPowerOffMode==ON)&&(PowerFlag==ON))
+		{
+		bytHoldOn3SPowerOff=OFF;
+		bytHoldOn3SPowerOffMode=OFF;
+		PowerFlag=OFF;
+		WriteEEP(EEP_Powerflag,PowerFlag);																
+		}
 	else
 	   MCUTimerActiveTimerEvent(SEC(0.1), _SYSTEM_TIMER_EVENT_JUDGE_PSW_STATE);
 	}

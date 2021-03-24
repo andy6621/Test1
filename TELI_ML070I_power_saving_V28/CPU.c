@@ -28,6 +28,8 @@ extern StructBatteryInfoType g_stBatteryInfo ;
 extern BYTE	PowerFlag;
 extern BYTE Power_down_mode;
 extern BYTE DVRChangeCurrent;
+extern BYTE bytFastEncoderMode;
+
 
 BYTE	 year1=0,year2=0,month=0,day=0,hour=0,minute=0,second=0;
 BYTE DVR_FACTORY_MODE=0;
@@ -76,6 +78,8 @@ BYTE  updn_reg[4]={0,0,0,0};
 bit ChangeKey;
 BYTE Time5ms;
 //BYTE FLASH_FLAG;
+BYTE bytHoldOn3SPowerOff=0;
+BYTE bytHoldOn3SPowerOffMode=0;
 WORD LED_FLASH_COUNT,Power_Msg_Count;
 short EncorderCount=0;
 
@@ -412,6 +416,9 @@ BYTE TempKey;
 				ChangeKey=1;		
 			//else			//william-v1.42-961130
 			//ChangeKey=0;	//william-v1.42-961130
+		if(bytFastEncoderMode==ON)	
+			Time5ms=12;
+		else
 			Time5ms=48;
 
 			if((updn_reg[0] == 0) && (updn_reg[1] == 1) && (updn_reg[2] == 3)&& (updn_reg[3] == 2))  //UP Key	  
@@ -521,6 +528,16 @@ else
 			KeyReady = ON;
 			}
 		}
+		else if( (keytic==300)&& (bytHoldOn3SPowerOff==ON)&&(PowerFlag==ON))///hold on the switch for 3S that power off
+			{
+				if(RepeatKey==ON)
+				{
+				Key = ON;
+				KeyReady = ON;	
+				bytHoldOn3SPowerOffMode=ON;
+				RepeatKey=OFF;	
+				}
+			}
 		else if( keytic==800 ) {//8sec into DVR factory mode	
 
 			if(RepeatKey==ON)

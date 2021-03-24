@@ -35,6 +35,7 @@ extern BYTE CameraVolt;
 extern BYTE PWR_START_flag;
 extern StructBatteryInfoType g_stBatteryInfo ;
 extern BYTE DVRChangeCurrent;
+extern BYTE bytHoldOn3SPowerOff;
 
 void DvrReceivePaser(void)
 {
@@ -378,6 +379,10 @@ if ( RS2_ready())
 							if((protocol_data[0]==1))
 								{
 								CLR_DVR_Shutdown();
+								bytHoldOn3SPowerOff=OFF;
+								#if(_DEBUG_MESSAGE_UART_Protocol==ON)	
+								GraphicsPrint(GREEN,"\r\n(CMD:bytHoldOn3SPowerOff=OFF)");	
+								#endif
 								}
 							else if((PowerFlag==ON)&&(protocol_data[0]==0))
 							{
@@ -402,8 +407,18 @@ if ( RS2_ready())
 							if(GET_DVR_EntrySleepMode()==TRUE)
 							CLR_DVR_EntrySleepMode();
 							}
-							
-							MCUTimerCancelTimerEvent(_USER_TIMER_EVENT_OSD_DVR_SHUTDOWN);							
+							else if((PowerFlag==ON)&&(protocol_data[0]==3))
+								{
+								bytHoldOn3SPowerOff=ON;
+								#if(_DEBUG_MESSAGE_UART_Protocol==ON)	
+								GraphicsPrint(RED,"\r\n(CMD:bytHoldOn3SPowerOff)");	
+								#endif
+								}
+
+						MCUTimerCancelTimerEvent(_USER_TIMER_EVENT_OSD_DVR_SHUTDOWN);							
+
+						if(bytHoldOn3SPowerOff==ON)						
+						MCUTimerActiveTimerEvent(SEC(15), _USER_TIMER_EVENT_OSD_DVR_SHUTDOWN);
 
 						break;
 

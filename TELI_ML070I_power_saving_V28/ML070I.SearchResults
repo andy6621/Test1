@@ -1,19 +1,4 @@
----- psw Matches (18 in 7 files) ----
-CPU.c:374:#define _ReadKey()		 ((~P4>>3)& 0x01)  //PSW P4.3
-CPU.h (include):112:#define GET_PSW()			 	(P4_3)	
-CPU.h (include):113:#define SET_PSW()	 			(P4_3 = 1)  	 
-CPU.h (include):114:#define CLR_PSW()	 			(P4_3 = 0)	
-Keyremo.c:43:	   MCUTimerActiveTimerEvent(SEC(0.1), _SYSTEM_TIMER_EVENT_JUDGE_PSW_STATE);
-Monitor.c:762:	else if( !stricmp( argv[0], "PSW" ) ) {
-Reg.h (include):14:sfr PSW   = 0xD0;
-Reg.h (include):56:/*  PSW  */
-Reg.h (include):194:sfr PSW   = 0xD0;
-Reg.h (include):291:/*  PSW  */
-SysTimer.c:1064:    case _SYSTEM_TIMER_EVENT_JUDGE_PSW_STATE:
-SysTimer.c:1113:					MCUTimerActiveTimerEvent(SEC(3), _SYSTEM_TIMER_EVENT_JUDGE_PSW_STATE);
-SysTimer.c:1477:									MCUTimerActiveTimerEvent(SEC(0.1), _SYSTEM_TIMER_EVENT_JUDGE_PSW_STATE);						
-SysTimer.c:1519:										MCUTimerActiveTimerEvent(SEC(0.1), _SYSTEM_TIMER_EVENT_JUDGE_PSW_STATE);	
-SysTimer.c:1586:								MCUTimerActiveTimerEvent(SEC(0.1), _SYSTEM_TIMER_EVENT_JUDGE_PSW_STATE);						
-SysTimer.c:1600:									MCUTimerActiveTimerEvent(SEC(0.1), _SYSTEM_TIMER_EVENT_JUDGE_PSW_STATE);						
-SysTimer.c:1657:					MCUTimerActiveTimerEvent(SEC(0.1), _SYSTEM_TIMER_EVENT_JUDGE_PSW_STATE);
-Typedefs.h (include):253:    _SYSTEM_TIMER_EVENT_JUDGE_PSW_STATE,    
+---- bytFastEncoderMode Matches (3 in 2 files) ----
+CPU.c:31:extern BYTE bytFastEncoderMode;
+CPU.c:419:		if(bytFastEncoderMode==ON)	
+Main.c:39:BYTE bytFastEncoderMode=OFF;

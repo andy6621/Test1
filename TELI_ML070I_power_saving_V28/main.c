@@ -36,7 +36,7 @@ BYTE LowBatteryFlag;
 BYTE PowerOffToOnFlag;
 BYTE DVRChangeCurrent=0;
 BYTE Power_down_mode=_DontgoingToPD;
-	
+BYTE bytFastEncoderMode=OFF;
 float EncorderLen=0;
 WORD EncorderLen_Offset=0;
 BYTE EncorderLenint=0,EncorderCountPN=0,EncorderCountPN_offset=0;
@@ -68,6 +68,7 @@ extern StructPowerInfoType idata g_stPowerInfo ;
 extern DATA WORD keytic;
 extern bit RepeatKey;
 extern BYTE IE_Temp;
+extern BYTE bytHoldOn3SPowerOff;
 
 struct RegisterInfo UserRange={0,40,21};
 struct RegisterInfo AD5110Range={0,40,21};
@@ -834,6 +835,7 @@ void WaitPowerOn(void)
 	//CLR_BATTERY_CAPACITY_HIGH_FLAG();
 	Power_down_mode=_DontgoingToPD;
 	P3M1=0x00;//p3.4 and P3.5 set output ryan@20210226
+	bytHoldOn3SPowerOff=OFF;
 
 	while(1) 
 	{
